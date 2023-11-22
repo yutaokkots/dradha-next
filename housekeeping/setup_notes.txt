@@ -1,0 +1,11 @@
+Set up
+
+1) Set up Next.js app
+ ** Project initialization
+    % npx create-next-app@latest
+ ** Running server; http://127.0.0.1:3000 ; http://localhost:3000
+    // development; 
+    % npm run dev
+    // production
+    % npm run build
+    % npm run start
