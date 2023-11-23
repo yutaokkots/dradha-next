@@ -4,17 +4,24 @@ src/redux/
 ├── features
 │   ├── counterSlice.ts
 │   ├── userSlice.ts
-│   └── <... otherSliceFiles.ts>
+│   └── <...otherSliceFiles.ts>
 ├── hooks.ts
 ├── provider.tsx
 └── store.ts
 
  ** Store
     A store is a container that holds the state of an application. It provides methods to update and subscribe to changes in the state. It serves as a single source of truth for the state of an application.
+    -> store.ts aggregates the reducers (function that changes the state) and states from the slice files. 
  ** Reducer
     A reducer is a pure function that specifies how the application's state changes in response to actions sent to the store. It takes the current state and an action as arguments and returns the next state of the application. Reducers are combined to form the overall state oin an application.
- ** Wrapper
-    A wrapper refers to a higher-order component or function that wraps components and connects them to the Redux store. In Next.js, this might be a custom _app.js or _app.tsx file the entire application is wrapped with the Redux Provider, making the Redux store available to all components in the app.
+    -> reducers are declared in the slice files, and aggregated in 'store.ts', which are used by the App. 
+ ** Provider
+    The Provider is a wrapper to provide the Redux store to its child components using the React-Redux Provider.
+    -> provider.ts includes a wrapper for the 'layout.tsx' file in src/app/layout.tsx. 
+ ** Hooks
+    Hooks are functions that allow:
+    -- interaction with the Redux store and access to its state -> store.getState()
+    -- dispatching an action -> store.dispatch(action)
  ** Slice
     A slice is a collection of reducer logic and actions for a single feature in an application. It is a way to organize the Redux store by grouping together the reducer function and the action creators that belong to a specific part of the application state. Each slice file can be thought of as a specific piece of state in an application, and they are typically located within the “features” directory in the “redux” folder.
 

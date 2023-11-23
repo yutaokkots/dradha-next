@@ -22,8 +22,8 @@ export default function Home() {
 
   return (
     <main style={{ maxWidth: 1200, marginInline: "auto", padding: 20 }}>
-      <div style={{ marginBottom: "4rem", textAlign: "center" }}>
-        <h4 style={{ marginBottom: 16 }}>{count}</h4>
+      <div style={{ textAlign: "center" }}>
+        <h4 >{count}</h4>
         <div>
           <div className="flex">
             <button 
@@ -33,7 +33,6 @@ export default function Home() {
             <button
               className="border p-2 rounded-md"
               onClick={() => dispatch(decrement())}
-              style={{ marginInline: 16 }}
               >decrement</button>
             <button 
               className="border p-2 rounded-md" 
