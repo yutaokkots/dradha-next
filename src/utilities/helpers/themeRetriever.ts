@@ -1,14 +1,14 @@
 /*
- * Retrieve an item from local storage based on the provided key.
- * @param - a key
+ * Retrieve the saved theme setting from local storage based on the provided key.
+ * 
  * @returns - value from local storage
 */
-const themeRetrieval = (): 'lighttheme'|'darktheme' => {
+const themeRetrieval = (): 'light'|'dark' => {
     const storedItem = localStorage.getItem("theme");
     if (storedItem == null){
-        return "darktheme"
+        return "dark"
     } else {
-        return storedItem as 'lighttheme' | 'darktheme';
+        return storedItem as 'light' | 'dark';
     }
 }
 

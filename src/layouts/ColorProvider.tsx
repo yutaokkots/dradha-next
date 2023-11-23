@@ -8,7 +8,7 @@ interface ColorProviderProps {
 }
 
 const ColorProvider = ({ children }:ColorProviderProps):JSX.Element => {
-    const [colorTheme, setColorTheme] = useState<'lighttheme'|'darktheme'>('darktheme');
+    const [colorTheme, setColorTheme] = useState<'light'|'dark'>('dark');
 
     useEffect(() => {
         const themeGetter = async () => {
