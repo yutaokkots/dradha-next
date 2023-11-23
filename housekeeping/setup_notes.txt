@@ -1,7 +1,7 @@
 Set up
 
 1) Set up Next.js app
- ** Project initialization
+ ** Project initialization (with typescript, eslint, tailwindCSS)
     % npx create-next-app@latest
  ** Running server; http://127.0.0.1:3000 ; http://localhost:3000
     // development; 
@@ -9,3 +9,7 @@ Set up
     // production
     % npm run build
     % npm run start
+ ** State management - https://codevoweb.com/setup-redux-toolkit-in-nextjs-13-app-directory/
+    % npm install @reduxjs/toolkit
+    % npm install react-redux
+ ** Testing
