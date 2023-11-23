@@ -1,7 +1,7 @@
 "use client";
 
-import { decrement, increment, reset } from "@/redux/features/counterSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { decrement, increment, reset, incrementByAmount, decrementByAmount } from "../redux/features/counterSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 
 export default function Home() {
   const count = useAppSelector((state) => state.counterReducer.value);
@@ -11,14 +11,33 @@ export default function Home() {
     <main style={{ maxWidth: 1200, marginInline: "auto", padding: 20 }}>
       <div style={{ marginBottom: "4rem", textAlign: "center" }}>
         <h4 style={{ marginBottom: 16 }}>{count}</h4>
-        <button onClick={() => dispatch(increment())}>increment</button>
-        <button
-          onClick={() => dispatch(decrement())}
-          style={{ marginInline: 16 }}
-        >
-          decrement
-        </button>
-        <button onClick={() => dispatch(reset())}>reset</button>
+        <div>
+          <div className="flex">
+            <button 
+              className="border p-2 rounded-md" 
+              onClick={() => dispatch(increment())}
+              >increment</button>
+            <button
+              className="border p-2 rounded-md"
+              onClick={() => dispatch(decrement())}
+              style={{ marginInline: 16 }}
+              >decrement</button>
+            <button 
+              className="border p-2 rounded-md" 
+              onClick={() => dispatch(reset())}
+              >reset</button>
+          </div>
+          <div>
+            <button 
+              className="border p-2 rounded-md" 
+              onClick={() => dispatch(decrementByAmount(5))}
+              >- 5</button>
+            <button 
+              className="border p-2 rounded-md" 
+              onClick={() => dispatch(incrementByAmount(5))}
+              >+ 5</button>
+            </div>
+          </div>
       </div>
     </main>
   );

@@ -1,7 +1,10 @@
+
+redux
 .
 ├── features
 │   ├── counterSlice.ts
-│   └── userSlice.ts
+│   ├── userSlice.ts
+│   └── <... otherSliceFiles.ts>
 ├── hooks.ts
 ├── provider.tsx
 └── store.ts
@@ -13,7 +16,34 @@
  ** Wrapper
     A wrapper refers to a higher-order component or function that wraps components and connects them to the Redux store. In Next.js, this might be a custom _app.js or _app.tsx file the entire application is wrapped with the Redux Provider, making the Redux store available to all components in the app.
  ** Slice
-    A slice is a collection of reducer logic and actions for a single feature in an application. It is a way to organize your Redux store by grouping together the reducer function and the action creators that belong to a specific part of the application state. Each slice file can be thought of as a specific piece of state in an application, and they are typically located within the “features” directory in the “redux” folder.
+    A slice is a collection of reducer logic and actions for a single feature in an application. It is a way to organize the Redux store by grouping together the reducer function and the action creators that belong to a specific part of the application state. Each slice file can be thought of as a specific piece of state in an application, and they are typically located within the “features” directory in the “redux” folder.
 
 
 https://codevoweb.com/setup-redux-toolkit-in-nextjs-13-app-directory/
+
+
+########################################### 
+########## REDUX & REDUX TOOLKIT ########## 
+########################################### 
+
+redux-toolkit
+package here: https://www.npmjs.com/package/@reduxjs/toolkit
+
+Legacy Redux usage patterns typically required several dozen lines of copy-pasted boilerplate. 
+These patterns included:
+ - Combining the slice reducers into the root reducer.
+ - Creating the middleware enhancer, usually with the thunk middleware or other side effects middleware, as well as middleware that might be used for development checks.
+ - Adding the Redux DevTools enhancer, and composing the enhancers together.
+ - Calling 'createStore'.
+
+Redux Toolkit's 'configureStore' simplifies that setup process. 
+One call to 'configureStore' will:
+ - Call 'combineReducers' to combine your slices reducers into the root reducer function.
+ - Add the thunk middleware called 'applyMiddleware'.
+ - In development, automatically add more middleware to check for common mistakes, like accidentally mutating the state.
+ - Automatically set up the Redux DevTools Extension connection.
+ - Call 'createStore' to create a Redux store using that root reducer and those configuration options.
+
+Redux Toolkit's 'configureStore' is called in redux/store.ts to help set up the states in the application.
+
+(Source: https://redux-toolkit.js.org/api/configureStore)

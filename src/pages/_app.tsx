@@ -1,15 +1,14 @@
 import { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
-import { wrapper } from '../redux/store';
-import { createWrapper } from 'react-redux'
+import { store } from '../redux/store';
 
 function Dradha({ Component, pageProps}: AppProps){
 
     return (
-        <Provider store={wrapper.store}>
+        <Provider store={store}>
             <Component {...pageProps} />
         </Provider>
     );
 }
 
-export default wrapper.withRedux(Dradha);
+export default Dradha;
