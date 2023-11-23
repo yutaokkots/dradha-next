@@ -1,13 +1,15 @@
 
 import { configureStore } from "@reduxjs/toolkit"; 
 
-// example
+// created reducers
 import counterReducer from "./features/counterSlice";
+import userReducer from "./features/userExampleSlice"
 
 export const store = configureStore({
     reducer: {
-        // example
+        // examples
         counterReducer,
+        userReducer
     },
     devTools: process.env.NODE_ENV !== "production",
 });

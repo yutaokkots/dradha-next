@@ -1,11 +1,24 @@
 "use client";
-
+import { RootState } from "@/redux/store";
+import React, { useEffect } from "react";
 import { decrement, increment, reset, incrementByAmount, decrementByAmount } from "../redux/features/counterSlice";
+import { fetchUsers} from "../redux/features/userExampleSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { AppDispatch } from "@/redux/store";
 
 export default function Home() {
   const count = useAppSelector((state) => state.counterReducer.value);
   const dispatch = useAppDispatch();
+
+  const { entities } = useAppSelector((state: RootState) => state.userReducer)
+  console.log('===========')
+  console.log(entities)
+  console.log('===========')
+
+
+  useEffect(() => {
+    dispatch(fetchUsers())
+  }, [])
 
   return (
     <main style={{ maxWidth: 1200, marginInline: "auto", padding: 20 }}>

@@ -85,10 +85,10 @@ Each slice file should define a type for its initial state value, so that create
         }
 
 >>>>>> PayloadAction
-PayloadAction is a type provided by Redux Toolkit. 
-
 An 'action' in Redux is an object that describes a change in the state of the application. 
 The 'payload' is the piece of data that contains information about the change.
+
+PayloadAction is a type provided by Redux Toolkit. 
 
 PayloadAction is used to define action creators within a slice. 
 PayloadAction is a generic type, and the type of the payload can be specified. 
@@ -117,3 +117,28 @@ All generated actions should be defined using the PayloadAction<T> type from Red
 createAsyncThunk is a utility function provided by Redux Toolkit.
 createAsyncThunk simplifies the process of handling asynchronous logic in Redux actions. 
 It is often used in conjunction with createSlice to define asynchronous actions. 
+
+##############################
+########### Hooks
+###############
+
+Hooks are functions that allow 
+ -- interaction with the Redux store and access to its state -> store.getState()
+ -- dispatching an action -> store.dispatch(action)
+
+store.dispatch(action) is the only way to trigger a state change. 
+
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+
+>>>>>> useAppDispatch
+useAppSelector accesses a state.
+
+>>>>>> useAppSelector
+useAppDispatch dispatches actions and modify a state.
+
+##############################
+########### Thunks
+###############
+
+A thunk is an asynchronous function that can be dispatched to the Redux store. 
+Thunks are typically used to perform asynchronous operations and dispatch one or more actions based on the outcome of those operations.
