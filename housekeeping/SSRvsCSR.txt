@@ -1,0 +1,21 @@
+Server Side Rendering (SSR) in NextJS and React, vs Client Side Rendering (CSR)
+
+Which components should be Client Components?
+You might be wondering: how should I decide whether a given component should be a Server Component or a Client Component?
+
+As a general rule, if a component can be a Server Component, it should be a Server Component. Server Components tend to be simpler and easier to reason about. There's also a performance benefit: because Server Components don't run on the client, their code isn't included in our JavaScript bundles. One of the benefits of the React Server Components paradigm is that it has the potential to improve the Page Interactive (TTI) metric.
+
+That said, we also shouldn't make it our mission to eradicate as many Client Components as possible! We shouldn't try to optimize for the smallest # of Client Components. It's worth remembering that until now, every React component in every React app has been a Client Component.
+
+As you start working with React Server Components, you'll likely discover that this is pretty intuitive. Some of our components will need to run on the client, because they use state variables or effects. You can slap a 'use client' directive on those components. Otherwise, you can leave them as Server Components.
+
+(source: https://www.joshwcomeau.com/react/server-components/)
+
+React Server Components are about creating client boundaries. 
+Ff a certain component (inside a react app) has a state shared by other components, and the certain component becomes CSR via the "use client" directive, those other components are implicitly converted to CSR. 
+
+    For example, if a parent component includes a state called 'hit', and the parent component is turned to CSR via "use client", then child components that use 'hit' through prop-drilling are converted to CSR. 
+
+Depending on the "ownership" of the state, it is possible to create a state that changes on the client-side while remaining SSR. 
+
+

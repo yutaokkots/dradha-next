@@ -9,3 +9,5 @@ Set up
     // production
     % npm run build
     % npm run start
+ ** State management - Zustand - https://www.npmjs.com/package/zustand?activeTab=readme ; https://github.com/pmndrs/zustand
+    
