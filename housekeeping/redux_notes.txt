@@ -1,5 +1,5 @@
 
-redux
+src/redux/
 .
 ├── features
 │   ├── counterSlice.ts
@@ -29,6 +29,11 @@ https://codevoweb.com/setup-redux-toolkit-in-nextjs-13-app-directory/
 redux-toolkit
 package here: https://www.npmjs.com/package/@reduxjs/toolkit
 
+##############################
+###### 'configureStore'
+###############
+Redux Toolkit's 'configureStore' is called in redux/store.ts to help set up the states in the application.
+
 Legacy Redux usage patterns typically required several dozen lines of copy-pasted boilerplate. 
 These patterns included:
  - Combining the slice reducers into the root reducer.
@@ -44,6 +49,71 @@ One call to 'configureStore' will:
  - Automatically set up the Redux DevTools Extension connection.
  - Call 'createStore' to create a Redux store using that root reducer and those configuration options.
 
-Redux Toolkit's 'configureStore' is called in redux/store.ts to help set up the states in the application.
-
 (Source: https://redux-toolkit.js.org/api/configureStore)
+
+##############################
+########### Slice
+###############
+>>>>>> Parameters for createSlice
+
+    const createSlice = ({
+        name: string,               // name: A name, used in action types
+        initialState: any,          // initialStae: The initial state for the reducer
+        reducers: Object<string, ReducerFunction | ReducerAndPrepareObject>
+                                    // reducers: An object of "case reducers". 
+                                    //      Key names will be used to generate actions.
+        extraReducers?:
+        | Object<string, ReducerFunction>
+        | ((builder: ActionReducerMapBuilder<State>) => void)
+                                    // extraReducers?: A "builder callback" function used to add more reducers, or
+                                    //      an additional object of "case reducers", where the keys should be other
+                                    //      action types
+    })
+
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+>>>>>> Use with typescript
+Each slice file should define a type for its initial state value, so that createSlice can correctly infer the type of state in each case reducer.
+    Example: 
+        // Define a type for the slice state
+        interface CounterState {
+            value: number
+        }
+        // Define the initial state using that type
+        const initialState: CounterState = {
+            value: 0,
+        }
+
+>>>>>> PayloadAction
+PayloadAction is a type provided by Redux Toolkit. 
+
+An 'action' in Redux is an object that describes a change in the state of the application. 
+The 'payload' is the piece of data that contains information about the change.
+
+PayloadAction is used to define action creators within a slice. 
+PayloadAction is a generic type, and the type of the payload can be specified. 
+The PayloadAction type includes a 'payload' property that corresponds to the 'payload' of the action.
+All generated actions should be defined using the PayloadAction<T> type from Redux Toolkit.
+
+    Example, contd:
+        export const counterSlice = createSlice({
+            name: 'counter',
+            initialState,
+            reducers: {
+                increment: (state) => {
+                    state.value += 1
+                },
+                decrement: (state) => {
+                    state.value -= 1
+                },
+                // Use the PayloadAction type to declare the contents of `action.payload`
+                incrementByAmount: (state, action: PayloadAction<number>) => {
+                    state.value += action.payload
+                },
+            },
+        })
+
+>>>>>> createAsyncThunk
+createAsyncThunk is a utility function provided by Redux Toolkit.
+createAsyncThunk simplifies the process of handling asynchronous logic in Redux actions. 
+It is often used in conjunction with createSlice to define asynchronous actions. 
