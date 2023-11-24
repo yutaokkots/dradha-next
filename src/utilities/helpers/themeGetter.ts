@@ -14,12 +14,6 @@ const themeGetter = (): 'light'|'dark' => {
     } else {
         return storedItem as 'light' | 'dark';
     }
-    // const storedItem = localStorage.getItem("theme");
-    // if (storedItem == null){
-    //     return "dark"
-    // } else {
-    //     return storedItem as 'light' | 'dark';
-    // }
 }
 
 export default themeGetter;
