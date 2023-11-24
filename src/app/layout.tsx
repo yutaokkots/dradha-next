@@ -1,10 +1,9 @@
-import ColorProvider from '@/layouts/ColorProvider'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
-
 const inter = Inter({ subsets: ['latin'] })
+import themeGetter from "@/utilities/helpers/themeGetter";
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,11 +15,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+    const theme = themeGetter();
+
   return (
-    <html lang="en">
-      <ColorProvider>
-        <body className={inter.className}>{children}</body>
-      </ColorProvider>
+    <html lang="en" data-mode={theme}>
+        <body className={inter.className}>
+          {children}
+          </body>
     </html>
   )
 }
