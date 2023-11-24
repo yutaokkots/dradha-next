@@ -10,4 +10,15 @@ Set up
     % npm run build
     % npm run start
  ** State management - Zustand - https://www.npmjs.com/package/zustand?activeTab=readme ; https://github.com/pmndrs/zustand
-    
+    % npm i zustand
+ ** testing libraries - jest ('-D' indicates 'devDependencies')
+    % npm i -D @testing-library/jest-dom @testing-library/react @testing-library/user-event jest jest-environment-jsdom ts-jest
+    % touch jest.config.js 
+         // paste code from here: https://nextjs.org/docs/pages/building-your-application/optimizing/testing
+         // refer to this video here: https://youtu.be/AS79oJ3Fcf0?t=471
+    % touch jest.config.js 
+         // refer to this video here: https://youtu.be/AS79oJ3Fcf0?t=607
+    % npm i -D eslint-plugin-jest-dom eslint-plugin-testing-library
+         // refer to this video here: https://youtu.be/AS79oJ3Fcf0?t=636
+    % open .eslintrc.json
+         // refer to this video here: https://youtu.be/AS79oJ3Fcf0?t=636
