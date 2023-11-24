@@ -14,6 +14,7 @@ import themeSetter from "@/utilities/helpers/themeSetter";
  * @function toggleTheme - Toggles the 'dark' class on the HTML root element and updates the
  * pageTheme state accordingly. It also calls an external function (themeSetter) to persist
  * the theme preference, e.g., in local storage.
+ * 
  * @returns {JSX.Element} - A button component that indicates 'LIGHT' or 'DARK' based on the
  * current theme.
  */
