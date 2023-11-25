@@ -42,7 +42,20 @@ const SideBar = () => {
                         <div className="col-span-9">Project 1</div>
                     </div>
                 </div>
-                <div>Sign in</div>
+                <div className="flex-1 border-2 w-full flex items-end">
+                    <div className='flex flex-col w-full border-green-100 items-center'>
+                        <div>
+                            <button className='border-2 rounded-md'>
+                                Sign in
+                            </button>
+                        </div>
+                        <div className="border-2 w-full border-green-100">
+                            <div>
+                                About dradha
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
     )
