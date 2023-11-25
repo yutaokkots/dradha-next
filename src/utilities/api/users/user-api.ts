@@ -1,6 +1,6 @@
-import { routes } from "../routes"
-import sendRequest, { SendRequestOptions } from "../utils/send-requests"
-const BASE_URL = routes.auth
+import { routes } from "../routes";
+import sendRequest, { SendRequestOptions } from "../utils/send-requests";
+const BASE_URL = routes.auth;
 
 interface userDataOptions {
     userData: any | null | undefined;
@@ -20,7 +20,7 @@ export class AuthService {
             method: "POST",
             payload: userData
         }
-        return sendRequest(options)
+        return sendRequest(options);
     }
 }
 

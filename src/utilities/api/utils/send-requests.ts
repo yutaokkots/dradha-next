@@ -20,9 +20,9 @@ const sendRequests = async (
         {endpoint, 
             method="GET", 
             payload=null}: SendRequestOptions):Promise<any> => {
-    // @type options - RequestInit
+    // @type options - RequestInit 
     const options:RequestInit = {};
-    // @type headersInit - HeadersInit
+    // @type headersInit - HeadersInit 
     const headersInit: HeadersInit = {};
     options.headers = headersInit;
     options.method = method;
@@ -36,7 +36,7 @@ const sendRequests = async (
         options.headers = options.headers || [];
         options.headers['Authorization'] = `Bearer ${token}`;
     }
-    try{
+    try {
         const response = await fetch(`${DEV_URL}/${endpoint}`, options)
         if (!response.ok) {
             throw new Error(`HTTP error. Status: ${response.status}`);

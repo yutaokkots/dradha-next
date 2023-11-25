@@ -15,3 +15,12 @@ export const tokenGetter = () => {
     }
     return token
 }
+
+/** 
+ * Removes the saved token from localhost.
+ * 
+ * @returns {void} 
+*/
+export const tokenRemover = () => {
+    localStorage.remove("token")
+}
