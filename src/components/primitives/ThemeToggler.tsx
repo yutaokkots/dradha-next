@@ -23,13 +23,14 @@ const ThemeToggler= () => {
 
     const toggleTheme = () => {
         const root = document.getElementsByTagName('html')[0]
-        root.classList.toggle("dark")
-        if (root.classList.contains("dark")){
+        if (root.classList.toggle("dark")){
             setPageTheme("dark")
             themeSetter("dark")
-        } else {
+            root.classList.remove("light")
+        } else{
             setPageTheme("light")
             themeSetter("light")
+            root.classList.add("light")
         }
     }
     return (

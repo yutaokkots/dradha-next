@@ -23,6 +23,10 @@ const SideBar = () => {
                         <div className="col-span-3">A</div>
                         <div className="col-span-9">About</div>
                     </div>
+                    <div className="grid grid-cols-12">
+                        <div className="col-span-3">L</div>
+                        <div className="col-span-9">Blog</div>
+                    </div>
                 </div>
                 <div className="border-2 w-full">
                     <div>Self</div>
@@ -35,7 +39,7 @@ const SideBar = () => {
                     <div>Project</div>
                     <div className="grid grid-cols-12">
                         <div className="col-span-3">N</div>
-                        <div className="col-span-9">Project3</div>
+                        <div className="col-span-9">Project 3</div>
                     </div>
                     <div className="grid grid-cols-12">
                         <div className="col-span-3">P</div>
