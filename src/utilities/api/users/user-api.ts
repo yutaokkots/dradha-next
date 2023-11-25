@@ -1,11 +1,35 @@
 import { routes } from "../routes"
-import sendRequest from "../utils/send-requests"
+import sendRequest, { SendRequestOptions } from "../utils/send-requests"
 const BASE_URL = routes.auth
 
-interface userDataType {
+interface userDataOptions {
     userData: any | null | undefined;
 }
 
-export const login = (userData:userDataType) => {
-    return sendRequest(`${BASE_URL}/login`, "POST", userData)
+// class-based AuthService
+export class AuthService {
+    private baseURL: string;
+
+    constructor(){
+        this.baseURL = BASE_URL;
+    }
+
+    login({ userData }: userDataOptions) {
+        const options:SendRequestOptions = {
+            endpoint: `${this.baseURL}/login`,
+            method: "POST",
+            payload: userData
+        }
+        return sendRequest(options)
+    }
 }
+
+// usage
+// const authService = new AuthService()
+
+
+
+// AuthService (function-based)
+// export const login = (userData:userDataOptions) => {
+//     return sendRequest(`${BASE_URL}/login`, "POST", userData)
+// }
