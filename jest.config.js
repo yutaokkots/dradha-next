@@ -16,4 +16,3 @@ const config = {
  
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
 module.exports = createJestConfig(config)
-https://youtu.be/AS79oJ3Fcf0?t=589

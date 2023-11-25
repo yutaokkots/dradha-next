@@ -14,6 +14,7 @@ import themeSetter from "@/utilities/helpers/themeSetter";
  * @function toggleTheme - Toggles the 'dark' class on the HTML root element and updates the
  * pageTheme state accordingly. It also calls an external function (themeSetter) to persist
  * the theme preference, e.g., in local storage.
+ * 
  * @returns {JSX.Element} - A button component that indicates 'LIGHT' or 'DARK' based on the
  * current theme.
  */
@@ -22,22 +23,23 @@ const ThemeToggler= () => {
 
     const toggleTheme = () => {
         const root = document.getElementsByTagName('html')[0]
-        root.classList.toggle("dark")
-        if (root.classList.contains("dark")){
+        if (root.classList.toggle("dark")){
             setPageTheme("dark")
             themeSetter("dark")
-        } else {
+            root.classList.remove("light")
+        } else{
             setPageTheme("light")
             themeSetter("light")
+            root.classList.add("light")
         }
     }
     return (
         <button
             onClick={toggleTheme}>
                 {pageTheme == "dark" ?
-                    <div className="border-2 rounded-sm">LIGHT</div>
+                    <div className="border-2 rounded-sm text-sm px-1">light</div>
                     :
-                    <div className="border-2 rounded-sm">DARK</div>
+                    <div className="border-2 rounded-sm text-sm px-1">dark</div>
                 }
         </button>
     )

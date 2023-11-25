@@ -8,14 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // colors: {
-      //   accent: {
-      //     1: "rgba(64,64,64)",
-      //     2: "rgba(179,179,179)",
-      //   },
-      //   bkg: "rgba(19,19,19)",
-      //   content: "rgba(253,253,253)",
-      // },
+      screens: {
+        'smcustom': '500px',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
