@@ -9,7 +9,7 @@ interface NavBarMobileProps {
     // Space for additional props
 }
 const NavBarMobile:React.FC<NavBarMobileProps> = () => {
-    const { menuToggle } = useMenuStore();
+    const { menuToggler } = useMenuStore();
 
     return (
         <div>
