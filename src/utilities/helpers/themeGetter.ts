@@ -1,5 +1,5 @@
-/*
- * Retrieve the saved theme setting from local storage based on the provided key.
+/** 
+ * Retrieve the saved theme setting from local storage with the key, "theme".
  * 
  * @returns - value from local storage
 */

@@ -36,9 +36,9 @@ const ThemeToggler= () => {
         <button
             onClick={toggleTheme}>
                 {pageTheme == "dark" ?
-                    <div className="border-2 rounded-sm">LIGHT</div>
+                    <div className="border-2 rounded-sm text-sm px-1">light</div>
                     :
-                    <div className="border-2 rounded-sm">DARK</div>
+                    <div className="border-2 rounded-sm text-sm px-1">dark</div>
                 }
         </button>
     )
