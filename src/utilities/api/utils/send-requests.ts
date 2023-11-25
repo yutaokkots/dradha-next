@@ -1,5 +1,6 @@
-import * as userService from '../users/user-service'
+import { tokenGetter } from '@/utilities/helpers/tokenGetter';
 const DEV_URL = "" //import.meta.env.VITE_DEV_URL
+
 /**
  * Sends an HTTP request to an api endpoint. 
  * @description Sends an HTTP request and retrieves a response, with an option to include a payload. 
@@ -30,7 +31,7 @@ export const sendRequests = async (
         options.headers = {'Content-Type': 'application/json'};
         options.body = JSON.stringify(payload);
     }
-    const token = userService.getToken();
+    const token = tokenGetter();
     if (token){
         options.headers = options.headers || [];
         options.headers['Authorization'] = `Bearer ${token}`;
