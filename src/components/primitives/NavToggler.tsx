@@ -23,10 +23,10 @@ interface NavTogglerProps {
 
 const NavToggler:React.FC<NavTogglerProps> = ({ children }) => {
     const menuState = useMenuStore((state) => state.menuState);
-    //const menuToggler = useMenuStore((state) => state.toggler);
+    const menuToggler = useMenuStore((state) => state.menuToggler);
 
     const handleTheme = () => {
-       //menuToggler()
+       menuToggler()
     }
 
     return (

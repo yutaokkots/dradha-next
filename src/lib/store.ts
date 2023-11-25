@@ -2,7 +2,7 @@
 import { create } from 'zustand';
 
 /** 
- * State for storing hiding or showing menu.
+ * State for hiding or showing menu.
  * 
  * @state {boolean} menuState - Represents a boolean for displaying or hiding a menu.
  * @function menuToggler - Switches the menuState state between true and false. 
@@ -21,7 +21,7 @@ export const useMenuStore = create<MenuStates>((set, get) => ({
 }))
 
 /** 
- * State for storing hiding or showing authorization (login/signup)
+ * State for hiding or showing authorization (login/signup).
  * 
  * @state {boolean} authModalState - Represents a boolean for displaying or hiding the registration/login modal.
  * @function toggler - Switches the menuState state between true and false. 

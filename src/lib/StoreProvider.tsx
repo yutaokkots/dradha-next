@@ -17,7 +17,7 @@ const StoreProvider:React.FC<StoreProviderProps> = ({ children, store }) => {
 
 export default StoreProvider;
 
-export const useStore = (selector, eqFn) => {
-  const store = useContext(StoreContext)
+// export const useStore = (selector, eqFn) => {
+//   const store = useContext(StoreContext)
 
-}
+// }
