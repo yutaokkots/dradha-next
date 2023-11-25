@@ -10,16 +10,16 @@ const DEV_URL = "" //import.meta.env.VITE_DEV_URL
  * @returns {Promise<object>} response - The json object returned from the API.
  * @throws {Error} - Throws an error if the response was unsuccessful. 
  */
-interface SendRequestTypes {
+export interface SendRequestOptions {
     endpoint: string;
-    method: "GET" | "POST" | "PUT" | "DELETE";
+    method?: "GET" | "POST" | "PUT" | "DELETE";
     payload?: any;
 }
 
-export const sendRequests = async (
+const sendRequests = async (
         {endpoint, 
             method="GET", 
-            payload=null}: SendRequestTypes):Promise<any> => {
+            payload=null}: SendRequestOptions):Promise<any> => {
     // @type options - RequestInit
     const options:RequestInit = {};
     // @type headersInit - HeadersInit
@@ -47,3 +47,5 @@ export const sendRequests = async (
         throw new Error('Bad Request');
     }
 }
+
+export default sendRequests;
