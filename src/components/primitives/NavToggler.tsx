@@ -27,7 +27,6 @@ const NavToggler:React.FC<NavTogglerProps> = ({ children }) => {
 
     const handleTheme = () => {
         toggler()
-        console.log(menuToggle)
     }
 
     return (

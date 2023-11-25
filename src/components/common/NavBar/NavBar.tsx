@@ -2,6 +2,7 @@ import React from 'react';
 import ThemeToggler from '@/components/primitives/ThemeToggler';
 import Hamburger from './Hamburger';
 import NavToggler from '@/components/primitives/NavToggler';
+import { useMenuStore } from '@/lib/store';
 
 interface NavBarProps {
     // Space for additional props
