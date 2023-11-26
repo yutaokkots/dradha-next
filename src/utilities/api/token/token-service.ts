@@ -1,5 +1,5 @@
 /**
- * Retrieves the token from client's local storage, or null if it is expired or does not exist. 
+ * Retrieves the token from client's local storage, or null if token is expired or does not exist. 
  * 
  * @returns {string | null} Returns a token, or null. 
  */

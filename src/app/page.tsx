@@ -1,11 +1,11 @@
 import NavBar from '@/components/common/NavBar/NavBar'
-import ThemeToggler from '@/components/primitives/ThemeToggler'
+import RegisterAuth from '@/components/modals/RegisterAuth'
 
 export default function Home() {
     return (
         <main>
             <NavBar/>
-            
+            <RegisterAuth />
         </main>
     )
 }
