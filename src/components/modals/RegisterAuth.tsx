@@ -1,8 +1,9 @@
 "use client";
 
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useState, useEffect } from 'react'
 import { InputField } from '../primitives/InputField';
-
+import PasswordCheck from './PasswordCheck';
+import { registrationForm, registrationCSSClass } from './registration';
 
 interface CredentialOptions {
     username: string;
@@ -11,31 +12,84 @@ interface CredentialOptions {
     passwordConfirm: string;
 }
 
+export interface PasswordOptions {
+    passwordMatch: boolean,
+    uppercase: boolean,
+    lowercase: boolean,
+    number: boolean,
+    symbol: boolean,
+    minimumChar: boolean
+}
+
 const RegisterAuth = () => {
+    const [passwordError, setPasswordError] = useState<PasswordOptions>({
+                                                        passwordMatch: false,
+                                                        uppercase: false,
+                                                        lowercase: false,
+                                                        number: false,
+                                                        symbol: false,
+                                                        minimumChar: false
+                                                    });
+
     const [credentials, setCredentials] = useState<CredentialOptions>({
-        username: "",
-        email: "",
-        password: "",
-        passwordConfirm: "",
-    })
+                                                        username: "",
+                                                        email: "",
+                                                        password: "",
+                                                        passwordConfirm: "",
+                                                    });
 
     const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
         setCredentials({...credentials, [e.target.name]:e.target.value})
     }
 
-    const handleSubmit = () => {
+    useEffect(() => {
+        const passwordMatchCheck = () => {
+            const isMatch = credentials.password == credentials.passwordConfirm && credentials.passwordConfirm != "";
+            const containsUppercase = /[A-Z]/.test(credentials.password)
+            const containsLowercase = /[a-z]/.test(credentials.password)
+            const containsNumber = /[0-9]/.test(credentials.password)
+            const containsSymbol = /[!)(?\[\]~;:@#%$^&*+=]/g.test(credentials.password)
+            const isMinChar = credentials.password.length > 5
+            setPasswordError({...passwordError, 
+                ["passwordMatch"]:isMatch,
+                ["uppercase"]:containsUppercase,
+                ["lowercase"]:containsLowercase,
+                ["number"]:containsNumber,
+                ["symbol"]:containsSymbol,
+                ["minimumChar"]:isMinChar,})
+        }
+        passwordMatchCheck ()
+        console.log(passwordError)
+    
+    }, [credentials.password, credentials.passwordConfirm])
 
+    const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        console.log(credentials)
     }
 
     return (
-        <form onSubmit={handleSubmit} className="flex flex-col items-center">
-            <input className="bg-black" placeholder="username"   type="text"     name="username"         onChange={handleChange}></input>
-            <input className="bg-black" placeholder="email"      type="email"    name="email"            onChange={handleChange}></input>
-            <input className="bg-black" placeholder="password"   type="password" name="password"         onChange={handleChange}></input>
-            <input className="bg-black" placeholder="confirm"    type="password" name="passwordConfirm"  onChange={handleChange}></input>
-            <InputField />
-            <button>Submit</button>    
-        </form>
+        <>
+            <form 
+                role="form" 
+                onSubmit={handleSubmit} 
+                className="flex flex-col items-center">
+                    {registrationForm.map((attributes, idx) => 
+                        (
+                        <>
+                            <label >{attributes.placeholder}</label>
+                            <InputField 
+                                key={idx} 
+                                inputAttributes={attributes} 
+                                handleChange={handleChange} 
+                                registrationCSSClass={registrationCSSClass}/>
+                        </>)
+                        )
+                    }
+                    <button>Submit</button>    
+            </form>
+            <PasswordCheck passwordError={passwordError}/>
+        </>
     )
 }
 
