@@ -1,29 +1,40 @@
+/**
+ * Retrieves the token from client's local storage, or null if it is expired or does not exist. 
+ * 
+ * @returns {string | null} Returns a token, or null. 
+ */
+interface TokenPayload {
+    exp:number;
+}
 
-export class TokenService {
-    private token: string | null;
-
-    constructor(){
-        this.token = localStorage.getItem("token");
+export const getToken = ():string|null => {
+    const token = localStorage.getItem("token") ?? null;
+    if (!token){
+        return null
     }
-
-    getToken() {
-        const token = localStorage.getItem("token");
-        if (!token){
-            this.token = null
-            return null
-        }
-        const payload = JSON.parse(window.atob(token.split('.')[1]))
-        if (payload.exp < Date.now() / 1000){
-            localStorage.removeItem('Token');
-            this.token = null
-            return null
-        }
-        this.token = token
-        return this.token
+    const payload:TokenPayload = JSON.parse(window.atob(token.split('.')[1]))
+    if (payload.exp < Date.now() / 1000){
+        localStorage.removeItem('token');
+        return null
     }
+    return token
+}
 
-    removeToken() {
-        localStorage.remove("token")
-    }
+/**
+ * Removes the token from client's local storage.
+ * 
+ * @returns void 
+ */
+export const removeToken = ():void => {
+    localStorage.remove("token");
+}
 
+/**
+ * Sets string to client's local storage.
+ * 
+ * @params {string} access
+ * @returns void 
+ */
+export const setToken = (access:string):void => {
+    localStorage.setItem("token", access);
 }
