@@ -13,6 +13,7 @@ interface CredentialOptions {
 }
 
 export interface PasswordOptions {
+    validPassword: boolean,
     passwordMatch: boolean,
     uppercase: boolean,
     lowercase: boolean,
@@ -23,6 +24,7 @@ export interface PasswordOptions {
 
 const RegisterAuth = () => {
     const [passwordError, setPasswordError] = useState<PasswordOptions>({
+                                                        validPassword: false,
                                                         passwordMatch: false,
                                                         uppercase: false,
                                                         lowercase: false,
@@ -45,12 +47,14 @@ const RegisterAuth = () => {
     useEffect(() => {
         const passwordMatchCheck = () => {
             const isMatch = credentials.password == credentials.passwordConfirm && credentials.passwordConfirm != "";
-            const containsUppercase = /[A-Z]/.test(credentials.password)
-            const containsLowercase = /[a-z]/.test(credentials.password)
-            const containsNumber = /[0-9]/.test(credentials.password)
-            const containsSymbol = /[!)(?\[\]~;:@#%$^&*+=]/g.test(credentials.password)
-            const isMinChar = credentials.password.length > 5
+            const containsUppercase = /[A-Z]/.test(credentials.password);
+            const containsLowercase = /[a-z]/.test(credentials.password);
+            const containsNumber = /[0-9]/.test(credentials.password);
+            const containsSymbol = /[!)(?\[\]~;:@#%$^&*+=]/g.test(credentials.password);
+            const isMinChar = credentials.password.length > 5;
+            const isValidPassword = isMatch && containsUppercase && containsLowercase && containsNumber && containsSymbol && isMinChar;
             setPasswordError({...passwordError, 
+                ["validPassword"]: isValidPassword,
                 ["passwordMatch"]:isMatch,
                 ["uppercase"]:containsUppercase,
                 ["lowercase"]:containsLowercase,
@@ -86,7 +90,7 @@ const RegisterAuth = () => {
                         </>)
                         )
                     }
-                    <button>Submit</button>    
+                    <button className="border-2 rounded-md disabled:bg-gray-200" disabled={!passwordError.validPassword}>Submit</button>    
             </form>
             <PasswordCheck passwordError={passwordError}/>
         </>
