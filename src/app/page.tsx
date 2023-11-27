@@ -1,11 +1,11 @@
 import NavBar from '@/components/common/NavBar/NavBar'
-import RegisterAuth from '@/components/modals/RegisterAuth'
+import AuthModal from '@/components/modals/AuthModal'
 
 export default function Home() {
     return (
         <main>
             <NavBar/>
-            <RegisterAuth />
+            <AuthModal />
         </main>
     )
 }

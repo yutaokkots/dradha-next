@@ -3,7 +3,7 @@ import React, {ChangeEvent} from "react";
 interface InputFieldProps {
     inputAttributes: inputAttributesOptions;
     handleChange: (e:ChangeEvent<HTMLInputElement>) => void;
-    registrationCSSClass: string;
+    inputCSSClass: string;
 }
 
 interface inputAttributesOptions {
@@ -15,11 +15,11 @@ interface inputAttributesOptions {
     
 }
 
-export const InputField = ({inputAttributes, handleChange, registrationCSSClass}:InputFieldProps) => {
+export const InputField = ({inputAttributes, handleChange, inputCSSClass}:InputFieldProps) => {
 
     return (
         <input
-            className={registrationCSSClass}
+            className={inputCSSClass}
             type={inputAttributes.type}
             name={inputAttributes.name}
             placeholder={inputAttributes.placeholder}

@@ -11,7 +11,7 @@ const PasswordCheck= ({ passwordError }:PasswordCheckProps) => {
         <>
             <div 
                 className={`${passwordError.passwordMatch ? "text-green-500" : "text-red-600"}`}>
-                Password Matches</div>
+                Password matches</div>
             <div 
                 className={`${passwordError.uppercase ? "text-green-500" : "text-red-600"}`}>
                 Contains at least one upper-case letter (A-Z)</div>
@@ -26,7 +26,7 @@ const PasswordCheck= ({ passwordError }:PasswordCheckProps) => {
                 Contains at least one special character &quot;!)(?[]~;:@#%$^&*+=&ldquo; </div>
             <div
                 className={`${passwordError.minimumChar ? "text-green-500" : "text-red-600"}`}>
-                6 characters or longer</div>
+                Consists of six characters or more</div>
         </>
     )
 }

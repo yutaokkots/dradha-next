@@ -1,7 +1,7 @@
 "use client";
 
 import React, { ChangeEvent, FormEvent, useState, useEffect } from 'react'
-import { InputField } from '../primitives/InputField';
+import { InputField } from '../../primitives/InputField';
 import PasswordCheck from './PasswordCheck';
 import { registrationForm, registrationCSSClass } from './registration';
 
@@ -86,7 +86,7 @@ const RegisterAuth = () => {
                                 key={idx} 
                                 inputAttributes={attributes} 
                                 handleChange={handleChange} 
-                                registrationCSSClass={registrationCSSClass}/>
+                                inputCSSClass={registrationCSSClass}/>
                         </>)
                         )
                     }
