@@ -23,19 +23,29 @@ export const useMenuStore = create<MenuStates>((set, get) => ({
 /** 
  * State for hiding or showing authorization (login/signup).
  * 
- * @state {boolean} authModalState - Represents a boolean for displaying or hiding the registration/login modal.
+ * @state {boolean} authModalState - Represents a boolean for displaying or hiding the authorization modal.
  * @function toggler - Switches the menuState state between true and false. 
+ * @state {boolean} registrationLoginState - Represents a boolean for displaying or hiding the registration/login screen inside the modal.
+ * @function registrationLoginToggler - Switches the registrationLoginState state between true and false. 
  */
 
-interface AuthModalStates {
+export interface AuthModalStates {
     authModalState: boolean;
-    authModalToggler:() => void
+    authModalToggler:() => void;
+    registrationLoginState: boolean;
+    registrationLoginToggler:() => void;
 }
 export const useAuthModalStore = create<AuthModalStates>((set, get) => ({
     authModalState: false,
     authModalToggler: () => {
         set({
             authModalState: !get().authModalState
+        })
+    },
+    registrationLoginState: true,
+    registrationLoginToggler: () => {
+        set({
+            registrationLoginState: !get().registrationLoginState
         })
     }
 }))

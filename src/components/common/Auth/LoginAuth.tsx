@@ -13,7 +13,8 @@ const LoginAuth = () => {
         <>
             <form
                 role="form"
-                onSubmit={handleSubmit}>
+                onSubmit={handleSubmit}
+                className="flex flex-col items-center">
                     { loginForm.map((attributes, idx) => 
                         <>
                             <InputField 
