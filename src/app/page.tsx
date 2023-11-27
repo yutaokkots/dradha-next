@@ -1,11 +1,11 @@
 import NavBar from '@/components/common/NavBar/NavBar'
-import ThemeToggler from '@/components/primitives/ThemeToggler'
+import AuthModal from '@/components/modals/AuthModal'
 
 export default function Home() {
     return (
         <main>
             <NavBar/>
-            
+            <AuthModal />
         </main>
     )
 }

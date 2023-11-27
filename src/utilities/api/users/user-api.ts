@@ -22,6 +22,15 @@ export class AuthService {
         }
         return sendRequest(options);
     }
+
+    register({ userData }:userDataOptions){
+        const options:SendRequestOptions = {
+            endpoint: `${this.baseURL}/createuser`,
+            method: "POST",
+            payload: userData
+        }
+        return sendRequest(options)
+    }
 }
 
 // usage
