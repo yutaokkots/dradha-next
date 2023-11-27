@@ -1,5 +1,6 @@
 import React from 'react'
 import ThemeToggler from '@/components/primitives/ThemeToggler';
+import SignInButton from '@/components/primitives/SignInButton';
 
 const SideBar = () => {
     return (
@@ -49,9 +50,7 @@ const SideBar = () => {
                 <div className="flex-1 border-2 w-full flex items-end">
                     <div className='flex flex-col w-full border-green-100 items-center'>
                         <div>
-                            <button className='border-2 rounded-md'>
-                                Sign in
-                            </button>
+                            <SignInButton />
                         </div>
                         <div className="border-2 w-full border-green-100">
                             <div>
