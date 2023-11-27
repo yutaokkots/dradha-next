@@ -1,5 +1,5 @@
 import { tokenGetter } from '@/utilities/helpers/tokenGetter';
-const DEV_URL = "" //import.meta.env.VITE_DEV_URL
+const DEV_URL = process.env.DEVELOPMENT_URL
 
 /**
  * Sends an HTTP request to an api endpoint. 

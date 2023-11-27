@@ -11,12 +11,16 @@ const LoginAuth = () => {
     }
     return (
         <>
+            <div>
+                Sign in
+            </div>
             <form
                 role="form"
                 onSubmit={handleSubmit}
                 className="flex flex-col items-center">
                     { loginForm.map((attributes, idx) => 
                         <>
+                            <label >{attributes.placeholder}</label>
                             <InputField 
                                 key={idx} 
                                 inputAttributes={attributes} 

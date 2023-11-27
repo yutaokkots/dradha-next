@@ -4,6 +4,7 @@ import React, { ChangeEvent, FormEvent, useState, useEffect } from 'react'
 import { InputField } from '../../primitives/InputField';
 import PasswordCheck from './PasswordCheck';
 import { registrationForm, registrationCSSClass } from './registration';
+import ThirdPartyAuth from './ThirdPartyAuth';
 
 interface CredentialOptions {
     username: string;
@@ -74,25 +75,52 @@ const RegisterAuth = () => {
 
     return (
         <>
-            <form 
-                role="form" 
-                onSubmit={handleSubmit} 
-                className="flex flex-col items-center">
-                    {registrationForm.map((attributes, idx) => 
-                        (
-                        <>
-                            <label >{attributes.placeholder}</label>
-                            <InputField 
-                                key={idx} 
-                                inputAttributes={attributes} 
-                                handleChange={handleChange} 
-                                inputCSSClass={registrationCSSClass}/>
-                        </>)
-                        )
-                    }
-                    <button className="border-2 rounded-md disabled:bg-gray-200" disabled={!passwordError.validPassword}>Submit</button>    
-            </form>
-            <PasswordCheck passwordError={passwordError}/>
+            <div>
+                Register a new account
+            </div>
+            <a href="https://github.com/login/oauth/authorize">
+                <div className="flex justify-center items-center py-3 pb-10 flex-col">
+                    <div className="p-4"><ThirdPartyAuth /></div>
+                    <div className="border-2 rounded-md px-2">
+                        Sign in using Github
+                    </div>
+                </div>
+            </a>
+            <div className="grid  grid-cols-8 items-center">
+                <div className="col-span-3">
+                    <hr></hr>
+                </div>
+                <div className="col-span-2 text-center">
+                    or
+                </div>
+                <div className="col-span-3">
+                    <hr></hr>
+                </div>
+            </div>
+            <div
+            className="mt-10">
+                <form 
+                    role="form" 
+                    onSubmit={handleSubmit} 
+                    className="flex flex-col items-center ">
+                        {registrationForm.map((attributes, idx) => 
+                            (
+                            <>
+                                <label >{attributes.placeholder}</label>
+                                <InputField 
+                                    key={idx} 
+                                    inputAttributes={attributes} 
+                                    handleChange={handleChange} 
+                                    inputCSSClass={registrationCSSClass}/>
+                            </>)
+                            )
+                        }
+                        <button className="border-2 rounded-md bg-gray-500 disabled:bg-gray-200 m-2 px-2" disabled={!passwordError.validPassword}>Submit</button>    
+                </form>
+                <div className={`text-sm border-2 rounded-md p-2 ${passwordError.validPassword ? "border-green-200": "border-red-200"}`}>
+                    <PasswordCheck passwordError={passwordError}/>
+                </div>
+            </div>
         </>
     )
 }
