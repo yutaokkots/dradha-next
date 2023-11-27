@@ -1,14 +1,13 @@
 "use client";
 
 import React from 'react'
-import LoginAuth from '../common/Auth/LoginAuth';
-import RegisterAuth from '../common/Auth/RegisterAuth';
+
 import { useAuthModalStore, AuthModalStates } from '@/lib/store'
-import SignInButton from '../primitives/SignInButton';
 import SignInCloseButton from '../primitives/SignInCloseButton';
+import AuthWindow from '../common/Auth/AuthWindow';
 
 const AuthModal = () => {
-    const { registrationLoginState, authModalState }:AuthModalStates = useAuthModalStore()  
+    const { authModalState }:AuthModalStates = useAuthModalStore();
 
     return (
         <>
@@ -21,15 +20,7 @@ const AuthModal = () => {
                                 <SignInCloseButton />
                             </div>
 
-                            <div>
-                                {
-                                    registrationLoginState 
-                                    ?
-                                    <RegisterAuth />
-                                    :
-                                    <LoginAuth />
-                                }
-                            </div>
+                            <AuthWindow />
                         </div>   
                     </div>
                 </>
