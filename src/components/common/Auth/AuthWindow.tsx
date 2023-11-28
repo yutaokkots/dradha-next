@@ -3,17 +3,14 @@ import { useAuthModalStore, AuthModalStates } from '@/lib/store'
 import LoginAuth from './LoginAuth';
 import RegisterAuth from './RegisterAuth';
 import ThirdPartyAuth from './ThirdPartyAuth';
-import RegisterLoginToggler from '@/components/primitives/registerLoginToggler';
+import RegisterLoginButton from '@/components/primitives/RegisterLoginButton';
 
 const AuthWindow = () => {
     const { registrationLoginState }:AuthModalStates = useAuthModalStore();
     return (
         <div>
             <div>
-                { registrationLoginState ? "Register a new account" : "Log in"}
-            </div>
-            <div>
-                <RegisterLoginToggler />
+                <RegisterLoginButton />
             </div>
             <a href="https://github.com/login/oauth/authorize">
                 <div className="flex justify-center items-center py-3 pb-10 flex-col">
