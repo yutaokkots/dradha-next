@@ -3,8 +3,17 @@
  * 
  * @returns - void
 */
-const themeSetter = (theme: 'light'|'dark' ) => {
+export const themeSetter = (theme: 'light'|'dark' ) => {
     localStorage.setItem("theme", theme);
 }
 
-export default themeSetter
+export const htmlClassThemeSetter = (theme: 'light'|'dark') => {
+    const root = document.getElementsByTagName('html')[0]
+    if (theme == 'light'){
+        root.classList.remove("dark")
+        root.classList.add("light")
+    } else if (theme == 'dark'){
+        root.classList.remove("light")
+        root.classList.add("dark")
+    }
+}

@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react"
-import themeSetter from "@/utilities/helpers/themeSetter";
+import React, { useEffect } from "react"
+import { themeSetter, htmlClassThemeSetter } from "@/utilities/helpers/themeSetter";
 import themeGetter from "@/utilities/helpers/themeGetter";
 import { useThemStore, ThemeStates } from "@/lib/store";
 
@@ -23,39 +23,30 @@ import { useThemStore, ThemeStates } from "@/lib/store";
  */
 const ThemeToggler= () => {
     const {themeState, themeToggler, themeStateSetter}:ThemeStates = useThemStore()
-    //const [pageTheme, setPageTheme] = useState<"light"|"dark">('dark')
 
     useEffect(() => {
-        const root = document.getElementsByTagName('html')[0]
         const currentTheme = themeGetter()
         if (currentTheme == "light"){
             themeStateSetter("light")
             themeSetter("light")
-            root.classList.remove("dark")
-            root.classList.add("light")
+            htmlClassThemeSetter("light")
         } else {
             themeStateSetter("dark")
             themeSetter("dark")
-            root.classList.remove("light")
-            root.classList.add("dark")
+            htmlClassThemeSetter("dark")
         }
     }, [])
 
     const toggleTheme = () => {
-        
-        const root = document.getElementsByTagName('html')[0]
         if (themeState == "light"){
             themeToggler()
             themeSetter("dark")
-            root.classList.remove("light")
-            root.classList.add("dark")
+            htmlClassThemeSetter("dark")
         } else {
             themeToggler()
             themeSetter("light")
-            root.classList.remove("dark")
-            root.classList.add("light")
+            htmlClassThemeSetter("light")
         }
-
     }
     return (
         <button
@@ -63,10 +54,10 @@ const ThemeToggler= () => {
             role="button" 
             aria-label="Toggle Dark/Light Theme"
             onClick={toggleTheme}>
-                {themeState == "dark" ?
-                    <div className="border-2 rounded-sm text-sm px-1">light</div>
-                    :
+                {themeState == "light" ?
                     <div className="border-2 rounded-sm text-sm px-1">dark</div>
+                    :
+                    <div className="border-2 rounded-sm text-sm px-1">light</div>
                 }
         </button>
     )
