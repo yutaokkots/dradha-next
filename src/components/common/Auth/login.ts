@@ -15,7 +15,7 @@ export const loginForm = [
         type: "email",
         name:"email",
         placeholder: "email",
-        autoCorrect: "off",
+        autocomplete: "off",
         id:"email",
         spellCheck: false
     },
@@ -23,7 +23,7 @@ export const loginForm = [
         type: "password",
         name:"password",
         placeholder: "password",
-        autoCorrect: "off",
+        autocomplete: "off",
         id:"password",
         spellCheck: false
     }

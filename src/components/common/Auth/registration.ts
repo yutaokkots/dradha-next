@@ -6,7 +6,7 @@
  * - type: Specifies the type of the input field (e.g., "text", "password").
  * - name: The name attribute for the input field, used when submitting forms.
  * - placeholder: The placeholder text displayed in the input field.
- * - autoCorrect: Specifies whether the browser should automatically correct the input.
+ * - autocomplete: Specifies whether the browser should automatically correct the input.
  * - id: The unique identifier (id) for the input field tag. Used with 'htmlFor' attribute for a label tag. 
  * - spellCheck: Specifies whether the browser should spell-check the input.
  */
@@ -16,7 +16,7 @@ export const registrationForm = [
         type: "text",
         name:"username",
         placeholder: "username",
-        autoCorrect: "off",
+        autocomplete: "username",
         id:"username",
         spellCheck: false
     },
@@ -24,23 +24,23 @@ export const registrationForm = [
         type: "email",
         name:"email",
         placeholder: "email",
-        autoCorrect: "off",
+        autocomplete: "email",
         id:"email",
         spellCheck: false
     },
     {
         type: "password",
         name:"password",
-        placeholder: "password",
-        autoCorrect: "off",
+        placeholder: "new-password",
+        autocomplete: "off",
         id:"password",
         spellCheck: false
     },
     {
         type: "password",
         name:"passwordConfirm",
-        placeholder: "confirm password",
-        autoCorrect: "off",
+        placeholder: "new-password",
+        autocomplete: "off",
         id:"password-confirm",
         spellCheck: false
     }

@@ -1,7 +1,10 @@
 "use client";
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import themeSetter from "@/utilities/helpers/themeSetter";
+import themeGetter from "@/utilities/helpers/themeGetter";
+import { useThemStore, ThemeStates } from "@/lib/store";
+
 /**
  * ThemeToggler component allows toggling between light and dark themes.
  *
@@ -19,19 +22,40 @@ import themeSetter from "@/utilities/helpers/themeSetter";
  * current theme.
  */
 const ThemeToggler= () => {
-    const [pageTheme, setPageTheme] = useState<"light"|"dark">('dark')
+    const {themeState, themeToggler, themeStateSetter}:ThemeStates = useThemStore()
+    //const [pageTheme, setPageTheme] = useState<"light"|"dark">('dark')
 
-    const toggleTheme = () => {
+    useEffect(() => {
         const root = document.getElementsByTagName('html')[0]
-        if (root.classList.toggle("dark")){
-            setPageTheme("dark")
+        const currentTheme = themeGetter()
+        if (currentTheme == "light"){
+            themeStateSetter("light")
+            themeSetter("light")
+            root.classList.remove("dark")
+            root.classList.add("light")
+        } else {
+            themeStateSetter("dark")
             themeSetter("dark")
             root.classList.remove("light")
-        } else{
-            setPageTheme("light")
+            root.classList.add("dark")
+        }
+    }, [])
+
+    const toggleTheme = () => {
+        
+        const root = document.getElementsByTagName('html')[0]
+        if (themeState == "light"){
+            themeToggler()
+            themeSetter("dark")
+            root.classList.remove("light")
+            root.classList.add("dark")
+        } else {
+            themeToggler()
             themeSetter("light")
+            root.classList.remove("dark")
             root.classList.add("light")
         }
+
     }
     return (
         <button
@@ -39,7 +63,7 @@ const ThemeToggler= () => {
             role="button" 
             aria-label="Toggle Dark/Light Theme"
             onClick={toggleTheme}>
-                {pageTheme == "dark" ?
+                {themeState == "dark" ?
                     <div className="border-2 rounded-sm text-sm px-1">light</div>
                     :
                     <div className="border-2 rounded-sm text-sm px-1">dark</div>

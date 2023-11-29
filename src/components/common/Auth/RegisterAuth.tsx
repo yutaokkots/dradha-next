@@ -80,7 +80,7 @@ const RegisterAuth = () => {
                 className="flex flex-col items-center ">
                     {registrationForm.map((attributes, idx) => 
                         (
-                        <>
+                        <React.Fragment key={idx} >
                             <label 
                                 htmlFor={attributes.id}>{attributes.placeholder}</label>
                             <InputField 
@@ -88,7 +88,7 @@ const RegisterAuth = () => {
                                 inputAttributes={attributes} 
                                 handleChange={handleChange} 
                                 inputCSSClass={registrationCSSClass}/>
-                        </>)
+                        </React.Fragment>)
                         )
                     }
                     <button

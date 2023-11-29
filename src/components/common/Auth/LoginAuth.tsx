@@ -20,8 +20,7 @@ const LoginAuth = () => {
                             <label 
                                 htmlFor={attributes.id}>{attributes.placeholder}</label>
                             <InputField 
-                                key={idx} 
-                                
+                                key={idx}
                                 inputAttributes={attributes} 
                                 handleChange={handleChange}
                                 inputCSSClass={loginCSSClass}
