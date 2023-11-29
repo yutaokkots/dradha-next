@@ -5,10 +5,12 @@
 
 import NavBar from '@/components/common/NavBar/NavBar'
 import AuthModal from '@/components/modals/AuthModal'
+import themeGetter from "@/utilities/helpers/themeGetter";
 
 export default function Home() {
+    const theme = themeGetter();
     return (
-        <main>
+        <main className={theme}>
             <NavBar/>
             <AuthModal />
         </main>

@@ -1,0 +1,98 @@
+Draft layout
+.
+├── globals.css
+├── layout.tsx
+├── page.tsx            (dradha.co/)
+├── v                   (dradha.co/v)
+│   ├── layout.tsx
+│   └── page.tsx
+└──
+
+.
+├── globals.css
+├── layout.tsx
+├── page.tsx            (dradha.co/)
+├── v                   (dradha.co/v) -> empty directory/refresh to main
+│   ├── layout.tsx
+│   ├── page.tsx
+    └── (users)
+        ├── layout.tsx
+        └── [user].tsx  (dradha.co/v/[user]) -> user's main dashboard
+
+
+
+└── 
+
+
+
+- - - -
+Convention
+
+A Dynamic Segment can be created by wrapping a file or folder name in square brackets: [segmentName]. 
+For example, [id] or [slug].
+
+Dynamic Segments can be accessed from useRouter.
+
+Example
+
+For example, a blog could include the following route 
+    pages/blog/[slug].js 
+where [slug] is the Dynamic Segment for blog posts.
+
+
+import { useRouter } from 'next/router'
+ 
+export default function Page() {
+  const router = useRouter()
+  return <p>Post: {router.query.slug}</p>
+}
+
+- - - -
+
+(source: https://nextjs.org/docs/pages/building-your-application/routing/linking-and-navigating)
+
+import Link from 'next/link'
+ 
+export default function Home() {
+  return (
+    <ul>
+      <li>
+        <Link href="/">Home</Link>
+      </li>
+      <li>
+        <Link href="/about">About Us</Link>
+      </li>
+      <li>
+        <Link href="/blog/hello-world">Blog Post</Link>
+      </li>
+    </ul>
+  )
+}
+
+
+The example above uses multiple links. Each one maps a path (href) to a known page:
+
+/                   →   pages/index.js
+/about              →   pages/about.js
+/blog/hello-world   →   pages/blog/[slug].js
+
+- - - - 
+
+Dynamic Paths:
+
+import Link from 'next/link'
+ 
+export default function Posts({ posts }) {
+  return (
+    <ul>
+      {posts.map((post) => (
+        <li key={post.id}>
+          <Link href={`/blog/${encodeURIComponent(post.slug)}`}>
+            {post.title}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
+}
+ 

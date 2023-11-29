@@ -63,8 +63,6 @@ const RegisterAuth = () => {
                 ["minimumChar"]:isMinChar,})
         }
         passwordMatchCheck ()
-        console.log(passwordError)
-    
     }, [credentials.password, credentials.passwordConfirm])
 
     const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
