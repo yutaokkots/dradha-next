@@ -91,7 +91,10 @@ const RegisterAuth = () => {
                         </>)
                         )
                     }
-                    <button className="border-2 rounded-md bg-gray-500 disabled:bg-gray-200 m-2 px-2" disabled={!passwordError.validPassword}>Submit</button>    
+                    <button
+                        id="register-button"
+                        role="button"
+                        className="border-2 rounded-md bg-gray-500 disabled:bg-gray-200 m-2 px-2" disabled={!passwordError.validPassword}>Submit</button>    
             </form>
             <PasswordCheck passwordError={passwordError}/>
         </>

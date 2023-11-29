@@ -8,7 +8,6 @@ const RegisterLoginToggler = () => {
     return (
         <button 
             role="button" 
-            aria-pressed="false"
             onClick={registrationLoginToggler}>
             {registrationLoginState? "Already registered? Log in " : "Don't have an account? Sign up"}
         </button>

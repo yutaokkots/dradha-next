@@ -28,7 +28,9 @@ const LoginAuth = () => {
                                 />
                         </>
                     )}
-                <button>Submit</button>
+                <button 
+                    id="login-button"
+                    role="button">Submit</button>
             </form>
         </>
     );

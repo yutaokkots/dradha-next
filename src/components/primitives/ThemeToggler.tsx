@@ -35,6 +35,7 @@ const ThemeToggler= () => {
     }
     return (
         <button
+            id="dark-light-theme-toggler"
             role="button" 
             aria-pressed="false"
             onClick={toggleTheme}>
