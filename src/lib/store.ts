@@ -1,6 +1,12 @@
 // State management using Zustand. https://github.com/pmndrs/zustand
 import { create } from 'zustand';
 
+/**
+ * State for the dark/light theme for the site.
+ * @state {'dark'|'light'} themeState - represents the strings, 'dark' or 'light'.
+ * @function themeTogler - switches the theme state between 'dark' and 'light'.
+ */
+
 /** 
  * State for hiding or showing menu.
  * 

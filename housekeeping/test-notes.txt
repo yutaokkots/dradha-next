@@ -17,3 +17,22 @@ Based on the Guiding Principles, your test should resemble how users interact wi
 3) Test IDs
     a) getByTestId: The user cannot see (or hear) these, so this is only recommended for cases where you can't match by role or text or it doesn't make sense (e.g. the text is dynamic).
 
+Examples:
+
+a) getByRole:               <button role="button">Submit</button>
+                                getByRole('button', { name: /submit/i });    
+b) getByLabelText:          <label htmlFor="username">Username</label>
+                            <input id="username" type="text" />
+                                getByLabelText('Username');     
+c) getByPlaceholderText:    <input type="text" placeholder="Enter your username" />
+                                getByPlaceholderText('Enter your username');
+d) getByText:               <p>Welcome to our website</p>
+                                getByText('Welcome to our website');
+e) getByDisplayValue:       <input type="text" value="john.doe@example.com" />
+                                getByDisplayValue('john.doe@example.com');
+f) getByAltText:            <img src="cat.jpg" alt="A cute cat" />
+                                getByAltText('A cute cat'); 
+g) getByTitle:              <div title="Important Information">Content</div>
+                                getByTitle('Important Information');
+h) getByTestId:             <button data-testid="submit-button">Submit</button>
+                                getByTestId('submit-button');

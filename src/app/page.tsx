@@ -1,3 +1,8 @@
+/** 
+ * Main page for the app. 
+ * Route: '/'
+*/
+
 import NavBar from '@/components/common/NavBar/NavBar'
 import AuthModal from '@/components/modals/AuthModal'
 

@@ -37,7 +37,7 @@ const ThemeToggler= () => {
         <button
             id="dark-light-theme-toggler"
             role="button" 
-            aria-pressed="false"
+            aria-label="Toggle Dark/Light Theme"
             onClick={toggleTheme}>
                 {pageTheme == "dark" ?
                     <div className="border-2 rounded-sm text-sm px-1">light</div>

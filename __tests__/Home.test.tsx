@@ -2,10 +2,9 @@
  *  @jest-environment
  */
 
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom';
 import Home from '@/app/page'
-
 
 test('renders Home component with NavBar and AuthModal', () => {
     // Arrange
@@ -19,3 +18,12 @@ test('renders Home component with NavBar and AuthModal', () => {
     expect(navBarElement).toBeInTheDocument();
     expect(authModalElement).toBeInTheDocument();
   });
+
+// test("Home component Navbar theme toggle switch changes the html class to 'dark;", () => {
+//     const { getByLabelText } = render(<Home />);
+//     const themeTogglerElement = screen.getByLabelText('Toggle Dark/Light Theme')
+//     expect(themeTogglerElement).toHaveTextContent("light");
+//     fireEvent.click(themeTogglerElement);
+//     expect(themeTogglerElement).toHaveTextContent("dark");
+
+// })

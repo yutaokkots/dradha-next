@@ -17,11 +17,11 @@ export default function RootLayout({
 }) {
     const theme = themeGetter();
 
-  return (
-    <html lang="en" className={theme}>
-        <body className={inter.className}>
-          {children}
-          </body>
-    </html>
+    return (
+        <html lang="en" className={theme}>
+            <body className={inter.className}>
+                {children}
+            </body>
+        </html>
   )
 }
