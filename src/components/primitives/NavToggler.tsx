@@ -31,7 +31,10 @@ const NavToggler:React.FC<NavTogglerProps> = ({ children }) => {
 
     return (
         <>
-            <button onClick={handleTheme}>
+            <button 
+                role="button" 
+                aria-pressed="false"
+                onClick={handleTheme}>
                 {children}
             </button>
         </>

@@ -1,0 +1,91 @@
+Accessibility:
+
+"If you can use a native HTML element or attribute with the semantics and behavior you require already built in, instead of re-purposing an element and adding an ARIA role, state or property to make it accessible, then do so."
+
+"No ARIA is better than bad ARIA." 
+
+Accessible Rich Internet Applications
+
+ARIA ROLES
+https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles
+(There are 6 categories of ARIA roles)
+1. Document structure roles
+    Many document structure roles have semantic HTML equivalents, making them redundant. 
+    For instance, roles like toolbar, tooltip, feed, math, presentation, and note have corresponding HTML elements. 
+    Opting for semantic HTML whenever possible ensures better accessibility and aligns with modern web development best practices.
+    List of semantic HTML elements:
+        https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+2. Widget roles
+    Widget roles define common interactive patterns. 
+        role="scrollbar"
+        role="searchbox"
+        role="separator (when focusable)"
+        role="slider"
+        role="spinbutton"
+        role="switch"
+        role="tab"
+        role="tabpanel"
+        role="treeitem"
+    However, some widget roles duplicate well-supported HTML elements and those should be avoided. 
+    Avoid the following roles, and instead, use:
+        role="button"            ==>  <button role="button" aria-pressed="false">
+        role="checkbox"          ==>  <input type="checkbox">
+        role="gridcell"          ==>  <td> (or other tags related to <table>)
+        role="link"              ==>  <a role="link">
+        role="menuitem"          ==>  <li> (list item) within a <ul> or <ol> (menu)
+        role="menuitemcheckbox"  ==>  <li> (list item) with <input type="checkbox"> within a <ul> or <ol> (menu)
+        role="menuitemradio"     ==>  <li> (list item) with <input type="radio"> within a <ul> or <ol> (menu)
+        role="option"            ==>  <select><option></select>
+        role="progressbar"       ==>  <progress>
+        role="radio"             ==>  <input type="radio">
+        role="textbox"           ==>  <input type="text"> or <textarea>
+    Unlike document structure roles, widget roles often require JavaScript interaction.
+3. Landmark roles
+    Landmark roles help organize and structure web pages by labeling different sections. 
+    They convey visual layout information programmatically, aiding screen readers in keyboard navigation. 
+    However, using too many landmark roles can create confusion in screen readers. 
+    
+    Here are some common landmark roles and their corresponding HTML elements:
+        role="banner"  -  Represents the document's header (<header>).
+        role="complementary"  -  Corresponds to an aside (<aside>).
+        role="contentinfo"  -  Represents the document's footer (<footer>).
+        role="form"  -  Corresponds to a form (<form>).
+        role="main"  -  Represents the main content of the document (<main>).
+        role="navigation"  -  Corresponds to navigation links (<nav>).
+        role="region"  -  Represents a section of content (<section>).
+        role="search"  -  Corresponds to a search area (<search>).
+    It's advisable to use landmark roles judiciously to avoid clutter in screen readers. 
+4. Live Region roles
+    Live Region roles are for elements with content that dynamically changes, visible to sighted users. 
+    These roles assist low vision and blind users by indicating updated content. 
+    Screen readers can announce dynamic changes. 
+        role="alert"
+                <div role="alert" aria-live="assertive">
+                    Error: Please enter a valid email address.
+                </div>
+        role="log"
+                <div role="log" aria-live="polite">
+                    User successfully logged in at 10:30 AM.
+                </div>
+        role="marquee" (scrolling or dynamic content)
+                <div role="marquee" aria-live="off">
+                    Breaking News: Important announcement at 3:00 PM!
+                </div>
+        role="status"
+                <div role="status" aria-live="polite">
+                    Processing payment...
+                </div>
+        role="timer"
+                <div role="timer" aria-live="assertive">
+                    Time remaining: 3 minutes.
+                </div>
+5. Window roles
+        Window roles define sub-windows to the main document window, within the same window, such as pop up modal dialogs:
+            role="alertdialog"
+            role="dialog"
+6. Abstract roles
+    Abstract roles are only intended for use by browsers to help organize and streamline a document. 
+    They should not be used by developers writing HTML markup.
+    Doing so will not result in any meaningful information being conveyed to assistive technologies or to users.
+    AVOID: command, composite, input, landmark, range, roletype, section, sectionhead, select, structure, widget,and window.
+

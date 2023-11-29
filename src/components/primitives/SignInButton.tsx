@@ -8,6 +8,8 @@ const SignInButton = () => {
 
     return (
         <button
+            role="button" 
+            aria-pressed="false"
             onClick={authModalToggler}>
             Sign in
         </button>

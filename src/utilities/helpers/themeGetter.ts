@@ -4,13 +4,9 @@
  * @returns - value from local storage
 */
 const themeGetter = (): 'light'|'dark' => {
-    if (typeof window !== 'undefined' && window.localStorage) {
-        localStorage.setItem('theme', 'dark');
-    }
     const storedItem = typeof window !== 'undefined' ? localStorage.getItem("theme") : null;
-
     if (storedItem == null) {
-        return "dark";
+        return "light";
     } else {
         return storedItem as 'light' | 'dark';
     }

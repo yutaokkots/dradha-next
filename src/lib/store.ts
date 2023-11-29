@@ -1,6 +1,32 @@
 // State management using Zustand. https://github.com/pmndrs/zustand
 import { create } from 'zustand';
 
+/**
+ * State for the dark/light theme for the site.
+ * @state {'dark'|'light'|null} themeState - represents the strings, 'dark' or 'light'.
+ * @function themeToggler - switches the theme state between 'dark' and 'light'.
+ * @function themeStateSetter - sets the theme state. 
+ */
+export interface ThemeStates {
+    themeState: 'dark'|'light'| null;
+    themeToggler: () => void;
+    themeStateSetter: (theme:'dark'|'light') => void;
+}
+export const useThemStore = create<ThemeStates>((set, get) => ({
+    themeState: "dark",
+    themeToggler: () => {
+        set({
+            themeState: get().themeState == "dark" ? "light" : "dark"
+        })
+    },
+    themeStateSetter: (theme) => {
+        set({
+            themeState: theme
+        })
+    } 
+}))
+
+
 /** 
  * State for hiding or showing menu.
  * 

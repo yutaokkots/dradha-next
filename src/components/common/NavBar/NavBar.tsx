@@ -10,10 +10,10 @@ interface NavBarProps {
 
 const NavBar:React.FC<NavBarProps> = () => {
     return(
-        <>
+        <div data-testid="navbar">
             <NavBarMobile />
             <SideBar />
-        </>
+        </div>
     )
 }
 

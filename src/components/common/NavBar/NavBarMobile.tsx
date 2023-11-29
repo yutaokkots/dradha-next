@@ -12,7 +12,7 @@ const NavBarMobile:React.FC<NavBarMobileProps> = () => {
     const { menuToggler } = useMenuStore();
 
     return (
-        <div>
+        <nav>
             <div className="h-[70px] w-screen fixed top-0 z-10 border-2 border-red-200 
                     smcustom:hidden">            
                 <div className="h-full smcustom:hidden">
@@ -25,7 +25,7 @@ const NavBarMobile:React.FC<NavBarMobileProps> = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </nav>
   )
 }
 

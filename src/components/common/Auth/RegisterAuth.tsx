@@ -63,8 +63,6 @@ const RegisterAuth = () => {
                 ["minimumChar"]:isMinChar,})
         }
         passwordMatchCheck ()
-        console.log(passwordError)
-    
     }, [credentials.password, credentials.passwordConfirm])
 
     const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
@@ -77,20 +75,24 @@ const RegisterAuth = () => {
             <form 
                 role="form" 
                 onSubmit={handleSubmit} 
-                className="flex flex-col items-center">
+                className="flex flex-col items-center ">
                     {registrationForm.map((attributes, idx) => 
                         (
-                        <>
-                            <label >{attributes.placeholder}</label>
+                        <React.Fragment key={idx} >
+                            <label 
+                                htmlFor={attributes.id}>{attributes.placeholder}</label>
                             <InputField 
                                 key={idx} 
                                 inputAttributes={attributes} 
                                 handleChange={handleChange} 
                                 inputCSSClass={registrationCSSClass}/>
-                        </>)
+                        </React.Fragment>)
                         )
                     }
-                    <button className="border-2 rounded-md disabled:bg-gray-200" disabled={!passwordError.validPassword}>Submit</button>    
+                    <button
+                        id="register-button"
+                        role="button"
+                        className="border-2 rounded-md bg-gray-500 disabled:bg-gray-200 m-2 px-2" disabled={!passwordError.validPassword}>Submit</button>    
             </form>
             <PasswordCheck passwordError={passwordError}/>
         </>
