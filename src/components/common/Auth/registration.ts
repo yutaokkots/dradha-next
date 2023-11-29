@@ -2,6 +2,13 @@
  * Registration Form Data
  * 
  * This array represents the configuration for the fields in a registration form.
+ * Registration Object:
+ * - type: Specifies the type of the input field (e.g., "text", "password").
+ * - name: The name attribute for the input field, used when submitting forms.
+ * - placeholder: The placeholder text displayed in the input field.
+ * - autoCorrect: Specifies whether the browser should automatically correct the input.
+ * - id: The unique identifier (id) for the input field tag. Used with 'htmlFor' attribute for a label tag. 
+ * - spellCheck: Specifies whether the browser should spell-check the input.
  */
 
 export const registrationForm = [
@@ -10,6 +17,7 @@ export const registrationForm = [
         name:"username",
         placeholder: "username",
         autoCorrect: "off",
+        id:"username",
         spellCheck: false
     },
     {
@@ -17,6 +25,7 @@ export const registrationForm = [
         name:"email",
         placeholder: "email",
         autoCorrect: "off",
+        id:"email",
         spellCheck: false
     },
     {
@@ -24,6 +33,7 @@ export const registrationForm = [
         name:"password",
         placeholder: "password",
         autoCorrect: "off",
+        id:"password",
         spellCheck: false
     },
     {
@@ -31,6 +41,7 @@ export const registrationForm = [
         name:"passwordConfirm",
         placeholder: "confirm password",
         autoCorrect: "off",
+        id:"password-confirm",
         spellCheck: false
     }
 ]

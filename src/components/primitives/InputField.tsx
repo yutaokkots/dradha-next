@@ -11,6 +11,7 @@ interface inputAttributesOptions {
     name: string;
     placeholder: string;
     autoCorrect: string;
+    id: string;
     spellCheck: boolean | undefined;
     
 }
@@ -24,16 +25,10 @@ export const InputField = ({inputAttributes, handleChange, inputCSSClass}:InputF
             name={inputAttributes.name}
             placeholder={inputAttributes.placeholder}
             autoCorrect={inputAttributes.autoCorrect}
+            id={inputAttributes.id}
             spellCheck={inputAttributes.spellCheck}
             onChange={handleChange}
             >
         </input>
     )
 };
-
-    // const inputAttributes = {
-    //     type: "text",
-    //     name:"username",
-    //     placeholder: "user nombre"
-    // }
-//            onChange={handleChange}

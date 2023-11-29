@@ -10,7 +10,7 @@ const AuthModal = () => {
     const { authModalState }:AuthModalStates = useAuthModalStore();
 
     return (
-        <>
+        <div data-testid="auth-modal">
             <div className={` ${authModalState ? 
                     "overflow-hidden opacity-100 transition-all duration-200 ease-out delay-200"
                     : 
@@ -22,13 +22,12 @@ const AuthModal = () => {
                             <div className="self-end">
                                 <SignInCloseButton />
                             </div>
-
                             <AuthWindow />
                         </div>   
                     </div>
                 </>
             </div>
-        </>
+        </div>
     );
 };
 export default AuthModal;

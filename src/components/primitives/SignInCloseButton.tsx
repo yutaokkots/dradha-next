@@ -7,6 +7,8 @@ const SignInCloseButton = () => {
         <div
             className="">
             <button
+                role="button" 
+                aria-pressed="false"
                 onClick={authModalToggler}
                 >
                     <div className="relative w-9 h-9  flex items-center">

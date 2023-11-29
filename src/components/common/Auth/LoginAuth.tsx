@@ -17,16 +17,17 @@ const LoginAuth = () => {
                 className="flex flex-col items-center">
                     { loginForm.map((attributes, idx) => 
                         <>
-                            <label >{attributes.placeholder}</label>
+                            <label 
+                                htmlFor={attributes.id}>{attributes.placeholder}</label>
                             <InputField 
                                 key={idx} 
+                                
                                 inputAttributes={attributes} 
                                 handleChange={handleChange}
                                 inputCSSClass={loginCSSClass}
                                 />
                         </>
-                    )  
-                    }
+                    )}
                 <button>Submit</button>
             </form>
         </>
