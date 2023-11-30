@@ -8,7 +8,7 @@ export const themeSetter = (theme: 'light'|'dark' ) => {
 }
 
 export const htmlClassThemeSetter = (theme: 'light'|'dark') => {
-    const root = document.getElementsByTagName('body')[0]
+    const root = document.getElementsByTagName('html')[0]
     if (theme == 'light'){
         root.classList.remove("dark")
         root.classList.add("light")
