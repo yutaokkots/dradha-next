@@ -1,3 +1,11 @@
+/** 
+ * PasswordCheckProps is an interface defining the props expected by the PasswordCheck component.
+ * A prop with type PasswordOptions is passed. 
+ * 
+ * Password must contain at least one special character 
+ * from the following: !)(?[]~;:@#%$^&*+=
+*/ 
+
 import React from 'react'
 
 import { PasswordOptions } from './RegisterAuth'
@@ -33,4 +41,4 @@ const PasswordCheck= ({ passwordError }:PasswordCheckProps) => {
 
 export default PasswordCheck
 
-// !)(?[]~;:@#%$^&*+=
+

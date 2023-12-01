@@ -4,10 +4,12 @@
 */
 
 import AuthModal from '@/components/modals/AuthModal'
-
+import NavBar
+ from '@/components/common/NavBar/NavBar'
 export default function Home() {
     return (
         <main>
+            <NavBar></NavBar>
             <AuthModal />
         </main>
     )

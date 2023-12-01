@@ -12,13 +12,6 @@ test('renders Home component with AuthModal', () => {
     expect(authModalElement).toBeInTheDocument();
   });
 
-test('renders Home component with NavBar and AuthModal', () => {
-    const { getByTestId } = render(<Home />);
-    const authModalElement = screen.getByTestId('auth-modal');
-  
-    // Assert
-    expect(authModalElement).toBeInTheDocument();
-  });
 
 // test("Home component Navbar theme toggle switch changes the html class to 'dark;", () => {
 //     const { getByLabelText } = render(<Home />);

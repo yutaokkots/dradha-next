@@ -2,14 +2,22 @@ import React from 'react'
 import Image from 'next/image'
 // import gitlogo from "/oauth/github-mark.png"
 //const gitlogo = require("/oauth/github-mark.png")
-const gitlogo = "/oauth/github-mark-white.png"
+import ThirdPartyAuthLinkGenerator from './ThirdPartyAuthLinkGenerator'
+import { thirdPartyOAuth} from '@/lib/thirdpartyoauth'
+
 
 const ThirdPartyAuth = () => {
     return (
-        <div>
-            <Image src={gitlogo} alt="github logo" width="60" height="60"/>
-        </div>
+        <>
+            { thirdPartyOAuth.map((data, idx) => 
+                <ThirdPartyAuthLinkGenerator
+                    key={idx} 
+                    data={data}/>
+            )
+            }
+        </>
     )
+
 }
 
 export default ThirdPartyAuth
