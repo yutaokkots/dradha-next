@@ -14,15 +14,25 @@ const ThirdPartyAuthLinkGenerator:React.FC<ThirdPartyAuthLinkGeneratorProps> = (
     const [link, setlink]= useState<string>("");
     const { githubOauthState, setGithubOauthState} = useVerificationAuthState()
 
+    const oauthState = async() => {
+        return await oAuthGithubUtils.oAuthGithubStateGet()
+            .then((res) => {
+                setGithubOauthState(res.state)
+                return res})
+            .then((res) => {
+                console.log(res)
+            }).catch((err) => {
+                console.error(err)
+            })
+    }
+
     useEffect(() => {
-        const randomState = () => {
-            return oAuthGithubUtils.oAuthGithubAuthorizationCode(20)
-        }
+
         const generateLink = () => {
             let params:string = "";
             if (data.name === "Github"){
-                const githubStatKey = randomState()
-                setGithubOauthState(githubStatKey)
+                const githubStateKey = randomState()
+                setGithubOauthState(githubStateKey)
                 params = `${oAuthGithubUtils.oAuthGithubLink()}&state=${githubStatKey}`
             }
             return `${data.link}${params}`
@@ -30,8 +40,13 @@ const ThirdPartyAuthLinkGenerator:React.FC<ThirdPartyAuthLinkGeneratorProps> = (
         setlink(`${generateLink()}`)
     }, [])
 
+    const handleClick = () => {
+
+    }
+
     return (
         <a href={link} 
+            onClick={handleClick}
             className="flex flex-col items-center">
             <div className="p-4">
                 <Image src={data.logo} alt={data.alt} width={data.width} height={data.height}/>

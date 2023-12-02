@@ -12,7 +12,7 @@ const config = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
   globalSetup: '<rootDir>/__tests__/setupEnv.ts',
-  "testPathIgnorePatterns": ["<rootDir>/__tests__/setupEnv.ts"],
+  "testPathIgnorePatterns": ["<rootDir>/__tests__/setupEnv.ts", "<rootDir>/__tests__/mock-fetch.ts"],
   preset: 'ts-jest',
 }
  

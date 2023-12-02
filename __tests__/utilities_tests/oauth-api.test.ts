@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import { oAuthGithubUtils }from '@/utilities/api/users/oauth-api'
-
+import { mockFetch } from '../mock-fetch';
 
 test("Testing the random state generator", ()=> {
     const stringLength:number = 20;
@@ -26,4 +26,25 @@ test("Compare the outgoing state and incoming state for equality", () => {
     expect(oAuthGithubUtils.oAuthGithubStateComparison(state1, state3)).toBeFalsy
     expect(oAuthGithubUtils.oAuthGithubStateComparison(state1, state4)).toBeFalsy
     expect(oAuthGithubUtils.oAuthGithubStateComparison(state4, state4)).toBeFalsy
+})
+
+test('postInput()', async () => {
+    window.fetch = mockFetch(someJson);
+  
+    // ... your postInput or component render here
+    const result = await postInput();
+  
+    // Assert your expectations
+    expect(result).toEqual(someJson);
+  });
+
+test("Retrieve a state from the django server for OAuth", async () => {
+    const mockdata = {
+        "state": "CnVolSXZkcz2xClIf3tJ",
+        "timestamp": "\"2023-12-02T12:57:05.861787\""
+    }
+    //window.fetch = mockFetch(mockdata);
+    const fetchedData = mockFetch(mockdata);
+    const state = oAuthGithubUtils.oAuthGithubStateGet()
+    console.log(state)
 })

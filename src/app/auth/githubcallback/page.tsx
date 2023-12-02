@@ -19,12 +19,17 @@ const GithubCallBack = () => {
 
     const [params, setParams] = useState<ParamsState>({code: null, state: null})
     const searchParams: ReadonlyURLSearchParams | null = useSearchParams();
+    const { githubOauthState }:VerificationAuthOptions = useVerificationAuthState()
 
     useEffect (() => {
         const code:string | null = searchParams ? searchParams.get('code') : null
         const state:string | null  = searchParams ? searchParams.get('state') : null
         setParams((params) => ({...params, code:code, state:state}))
         // if state is true, then send request to back-end
+
+        if (oAuthGithubStateComparison(githubOauthState, state)){
+            
+        }
 
 
     }, [])

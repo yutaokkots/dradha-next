@@ -25,9 +25,9 @@ export class SendRequest {
     }
 
     sendRequest = async (
-        {endpoint, 
-            method="GET", 
-            payload=null }:SendRequestOptions
+        endpoint:string,
+            method?:"GET", 
+            payload?: any
     ):Promise<any> => {
         const options:RequestInit = {};
         const header:HeadersInit = {};
@@ -37,13 +37,15 @@ export class SendRequest {
             options.headers = {'Content-Type': 'application/json'}
             options.body = JSON.stringify(payload);
         }
-        const token = tokenGetter
+        const token = tokenGetter()
         if (token) {
             options.headers = options.headers || [];
             options.headers["Authorization"] = `Bearer ${token}`;
         }
         try {
             const response = await fetch(`${this.server}/${endpoint}`, options)
+            console.log(response);
+            
             if (!response.ok) {
                 throw new Error(`HTTP error. Status: ${response.status}`);
             }

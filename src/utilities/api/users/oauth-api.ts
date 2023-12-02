@@ -6,11 +6,19 @@
  * @throws {Error} - Throws an error if the response was unsuccessful. 
  */
 
+import { SendRequest } from "../utils/send-requests"
 
 const GITHUB_ID = process.env.NEXT_PUBLIC_GITHUB_OAUTH_ID || ""
 const REDIRECT_URL = process.env.NEXT_PUBLIC_REDIRECT_URL || ""
 
 
+// Sends a request to receive an authorization token
+const oAuthGithubStateGet = () => {
+    const sr = new SendRequest()
+    return sr.sendRequest("oauth/callback/")
+}
+
+// Creates a github OAuth params to send with the initial OAuth request. 
 const oAuthGithubLink = () => {
     const queryParams = new URLSearchParams({
         client_id: GITHUB_ID,
@@ -19,7 +27,7 @@ const oAuthGithubLink = () => {
     return `?${queryParams.toString()}`;
 }
 
-// create random state code
+// Creates a randomly generated string for the Github OAuth state param. 
 const oAuthGithubAuthorizationCode = (stringLength:number):string => {
     let random:string = "";
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -32,7 +40,7 @@ const oAuthGithubAuthorizationCode = (stringLength:number):string => {
     return random
 }
 
-// compare the states
+// Compares two Github OAuth state params. 
 export const oAuthGithubStateComparison = (state1:string|null, state2:string|null) => {
     if (state1 === "" || state2 === ""){
         return false
@@ -40,8 +48,16 @@ export const oAuthGithubStateComparison = (state1:string|null, state2:string|nul
     return state1 === state2
 }
 
+// Sends Github OAuth token to back-end for processing. 
+export const oAuthGithubAPI = (token:string) => {
+
+}
+
+
+// export
 export const oAuthGithubUtils = {
     oAuthGithubAuthorizationCode: oAuthGithubAuthorizationCode,
     oAuthGithubLink: oAuthGithubLink,
-    oAuthGithubStateComparison: oAuthGithubStateComparison
+    oAuthGithubStateComparison: oAuthGithubStateComparison,
+    oAuthGithubStateGet :oAuthGithubStateGet 
 }
