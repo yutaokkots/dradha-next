@@ -3,32 +3,39 @@
 import React, {useEffect, useState} from 'react'
 import Image from 'next/image'
 import { ThirdPartyOAuthOptions } from '@/lib/thirdpartyoauth'
-import { oAuthGithubLink } from '@/utilities/api/users/oauth-api';
+import { oAuthGithubUtils } from '@/utilities/api/users/oauth-api';
+import { useVerificationAuthState, VerificationAuthOptions} from '@/lib/store';
 
 interface ThirdPartyAuthLinkGeneratorProps {
     data: ThirdPartyOAuthOptions 
 }
 
 const ThirdPartyAuthLinkGenerator:React.FC<ThirdPartyAuthLinkGeneratorProps> = ({ data }) => {
-    const [link, setlink]= useState<string>("")
+    const [link, setlink]= useState<string>("");
+    const { githubOauthState, setGithubOauthState} = useVerificationAuthState()
 
     useEffect(() => {
-        const generateLink = async():Promise<string> => {
-            let linkURL:string = ""
-            let params:string = ""
-            if (data.name === "Github"){
-                linkURL = data.link
-                const params = oAuthGithubLink()
-            }
-            return `${linkURL}${params}`
+        const randomState = () => {
+            return oAuthGithubUtils.oAuthGithubAuthorizationCode(20)
         }
+        const generateLink = () => {
+            let params:string = "";
+            if (data.name === "Github"){
+                const randomGithubState = randomState()
+                setGithubOauthState(randomGithubState)
+                params = `${oAuthGithubUtils.oAuthGithubLink()}&state=${randomGithubState}`
 
+            }
+            return `${data.link}${params}`
+        }
+        setlink(`${generateLink()}`)
     }, [])
 
-    console.log(link)
+
 
     return (
-        <a href={link} className="flex flex-col items-center">
+        <a href={link} 
+            className="flex flex-col items-center">
             <div className="p-4">
                 <Image src={data.logo} alt={data.alt} width={data.width} height={data.height}/>
             </div>

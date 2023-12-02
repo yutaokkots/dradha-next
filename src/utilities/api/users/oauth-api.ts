@@ -6,24 +6,17 @@
  * @throws {Error} - Throws an error if the response was unsuccessful. 
  */
 
-const GITHUB_ID = process.env.GITHUB_OAUTH_ID || ""
-const GITHUB_STATE = process.env.GITHUB_OAUTH_STATE || ""
-const REDIRECT_URL = process.env.REDIRECT_URL || ""
 
-const oAuthConfigGithub = {
-    client_id: GITHUB_ID,
-    redirect_uri: REDIRECT_URL,
-    state: GITHUB_STATE,
-}
+const GITHUB_ID = process.env.NEXT_PUBLIC_GITHUB_OAUTH_ID || ""
+const REDIRECT_URL = process.env.NEXT_PUBLIC_REDIRECT_URL || ""
+
 
 const oAuthGithubLink = () => {
-    const { client_id, redirect_uri, state } = oAuthConfigGithub;
     const queryParams = new URLSearchParams({
-        client_id,
-        redirect_uri,
-        state,
+        client_id: GITHUB_ID,
+        redirect_uri: REDIRECT_URL,
     });
-        
+    console.log("queryParams => ", queryParams.toString())
     return `?${queryParams.toString()}`;
 }
 
