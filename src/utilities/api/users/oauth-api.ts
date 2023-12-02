@@ -16,7 +16,6 @@ const oAuthGithubLink = () => {
         client_id: GITHUB_ID,
         redirect_uri: REDIRECT_URL,
     });
-    console.log("queryParams => ", queryParams.toString())
     return `?${queryParams.toString()}`;
 }
 
@@ -35,10 +34,14 @@ const oAuthGithubAuthorizationCode = (stringLength:number):string => {
 
 // compare the states
 export const oAuthGithubStateComparison = (state1:string|null, state2:string|null) => {
+    if (state1 === "" || state2 === ""){
+        return false
+    }
     return state1 === state2
 }
 
 export const oAuthGithubUtils = {
     oAuthGithubAuthorizationCode: oAuthGithubAuthorizationCode,
-    oAuthGithubLink: oAuthGithubLink 
+    oAuthGithubLink: oAuthGithubLink,
+    oAuthGithubStateComparison: oAuthGithubStateComparison
 }

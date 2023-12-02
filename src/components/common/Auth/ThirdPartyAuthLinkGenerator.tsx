@@ -21,17 +21,14 @@ const ThirdPartyAuthLinkGenerator:React.FC<ThirdPartyAuthLinkGeneratorProps> = (
         const generateLink = () => {
             let params:string = "";
             if (data.name === "Github"){
-                const randomGithubState = randomState()
-                setGithubOauthState(randomGithubState)
-                params = `${oAuthGithubUtils.oAuthGithubLink()}&state=${randomGithubState}`
-
+                const githubStatKey = randomState()
+                setGithubOauthState(githubStatKey)
+                params = `${oAuthGithubUtils.oAuthGithubLink()}&state=${githubStatKey}`
             }
             return `${data.link}${params}`
         }
         setlink(`${generateLink()}`)
     }, [])
-
-
 
     return (
         <a href={link} 
@@ -40,7 +37,7 @@ const ThirdPartyAuthLinkGenerator:React.FC<ThirdPartyAuthLinkGeneratorProps> = (
                 <Image src={data.logo} alt={data.alt} width={data.width} height={data.height}/>
             </div>
             <div className="border-2 rounded-md px-2">
-                Sign in using Github
+                Sign in using {data.name}
             </div>
         </a>
 
