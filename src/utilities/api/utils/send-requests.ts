@@ -9,7 +9,7 @@
 */
 
 import { tokenGetter } from '@/utilities/helpers/tokenGetter';
-const DEV_URL = process.env.DEVELOPMENT_URL
+const DEV_URL = process.env.NEXT_PUBLIC_DEVELOPMENT_URL
 
 export interface SendRequestOptions {
     endpoint: string;
@@ -25,10 +25,11 @@ export class SendRequest {
     }
 
     sendRequest = async (
-        endpoint:string,
+            endpoint:string,
             method?:"GET", 
             payload?: any
     ):Promise<any> => {
+        console.log(`${endpoint}`)
         const options:RequestInit = {};
         const header:HeadersInit = {};
         options.headers = header;
@@ -44,9 +45,8 @@ export class SendRequest {
         }
         try {
             const response = await fetch(`${this.server}/${endpoint}`, options)
-            console.log(response);
-            
             if (!response.ok) {
+                console.log('not ok', response)
                 throw new Error(`HTTP error. Status: ${response.status}`);
             }
             return response.json();

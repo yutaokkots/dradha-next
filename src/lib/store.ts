@@ -91,20 +91,34 @@ interface AuthStates {
  *                  to verify the login process. 
  */
 export interface VerificationAuthOptions {
-    githubOauthState: string
+    githubOauthState: string;
+    setGithubOauthState: (st:string) => void;
     githubOauthStateReset: () => void;
-    setGithubOauthState: (link:string) => void;
+    githubOauthLink: string;
+    setGithubOauthLink: (link:string) => void;
+    githubOauthLinkReset: () => void;
 }
 export const useVerificationAuthState = create<VerificationAuthOptions>((set, get) => ({
     githubOauthState: "",
+    setGithubOauthState: (st) => {
+        set({
+            githubOauthState: st
+        })
+    },
     githubOauthStateReset: () => {
         set({
             githubOauthState: ""
         })
     },
-    setGithubOauthState: (link) => {
+    githubOauthLink: "",
+    setGithubOauthLink: (link) => {
         set({
-            githubOauthState: link
+            githubOauthLink: link
+        })
+    },
+    githubOauthLinkReset: () => {
+        set({
+            githubOauthLink: ""
         })
     }
 }))

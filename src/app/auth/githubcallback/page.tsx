@@ -1,6 +1,6 @@
 "use client";
 /** 
- * GithubCallBack Page is the callback endpoint for Github's OAuth 2. 
+ * GithubCallBack Page is an intermediary page for the Github OAuth process. 
  * 
  * 
 */ 
@@ -8,6 +8,7 @@
 import React, { useEffect, useState } from 'react'
 import { useVerificationAuthState, VerificationAuthOptions } from '@/lib/store'
 import { useSearchParams, ReadonlyURLSearchParams} from 'next/navigation'
+import { useRouter } from 'next/navigation';
 import { oAuthGithubStateComparison } from '@/utilities/api/users/oauth-api';
 
 interface ParamsState {
@@ -16,28 +17,25 @@ interface ParamsState {
 }
 
 const GithubCallBack = () => {
-
     const [params, setParams] = useState<ParamsState>({code: null, state: null})
     const searchParams: ReadonlyURLSearchParams | null = useSearchParams();
-    const { githubOauthState }:VerificationAuthOptions = useVerificationAuthState()
+    const { githubOauthState, githubOauthLink }:VerificationAuthOptions = useVerificationAuthState()
+    const { push } = useRouter();
 
     useEffect (() => {
-        const code:string | null = searchParams ? searchParams.get('code') : null
-        const state:string | null  = searchParams ? searchParams.get('state') : null
-        setParams((params) => ({...params, code:code, state:state}))
-        // if state is true, then send request to back-end
-
-        if (oAuthGithubStateComparison(githubOauthState, state)){
-            
-        }
-
-
+        push(githubOauthLink);
     }, [])
     
+    console.log( githubOauthState)
+
     return (
         <>
-            <h1>code: {params.code}, state: {params.state}</h1>
+            <div className="w-screen h-screen">
+                <h1>code: {params.code}, state: {params.state}</h1>
                 <div>Logging in</div>
+                <div>{  githubOauthState } </div>
+                <div>{  githubOauthLink } </div>
+            </div>
         </>
     )
 }

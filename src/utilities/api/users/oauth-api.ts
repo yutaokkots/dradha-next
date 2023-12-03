@@ -15,7 +15,7 @@ const REDIRECT_URL = process.env.NEXT_PUBLIC_REDIRECT_URL || ""
 // Sends a request to receive an authorization token
 const oAuthGithubStateGet = () => {
     const sr = new SendRequest()
-    return sr.sendRequest("oauth/callback/")
+    return sr.sendRequest("oauth/callback/state")
 }
 
 // Creates a github OAuth params to send with the initial OAuth request. 
