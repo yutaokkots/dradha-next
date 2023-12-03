@@ -25,16 +25,6 @@
       --background-start-rgb: 248, 248, 249;
       --background-end-rgb: 255, 255, 255;
     }
-    .body.dark{
-      --foreground-rgb: 253, 253, 253;
-      --background-start-rgb: 27, 28, 25;
-      --background-end-rgb: 115, 117, 120;
-    }
-    .body.light{
-      --foreground-rgb: 0, 0, 0;
-      --background-start-rgb: 248, 248, 249;
-      --background-end-rgb: 255, 255, 255;
-    }
   }
 
 /* :root {

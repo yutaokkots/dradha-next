@@ -7,19 +7,16 @@ import RegisterLoginButton from '@/components/primitives/RegisterLoginButton';
 
 const AuthWindow = () => {
     const { registrationLoginState }:AuthModalStates = useAuthModalStore();
+
+    
     return (
         <div>
             <div>
                 <RegisterLoginButton />
             </div>
-            <a href="https://github.com/login/oauth/authorize">
-                <div className="flex justify-center items-center py-3 pb-10 flex-col">
-                    <div className="p-4"><ThirdPartyAuth /></div>
-                    <div className="border-2 rounded-md px-2">
-                        Sign in using Github
-                    </div>
-                </div>
-            </a>
+            <div className="flex justify-center items-center py-3 pb-10 flex-col">
+                <ThirdPartyAuth />
+            </div>
             <div className="grid  grid-cols-8 items-center">
                 <div className="col-span-3">
                     <hr></hr>

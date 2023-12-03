@@ -12,16 +12,29 @@ Draft layout
 ├── globals.css
 ├── layout.tsx
 ├── page.tsx            (dradha.co/)
-├── v                   (dradha.co/v) -> empty directory/refresh to main
+├── v                   (dradha.co/v/) -> empty directory/refresh to main
 │   ├── layout.tsx
 │   ├── page.tsx
-    └── (users)
-        ├── layout.tsx
-        └── [user].tsx  (dradha.co/v/[user]) -> user's main dashboard
-
-
+│   └── (users)
+│       ├── layout.tsx
+│       └── [user].tsx  (dradha.co/v/[user]) -> user's main dashboard
+└── auth
+    ├── page.tsx
+    └── githubcallback  (dradha.co/auth/githubcallback)
+        ├── page.tsx
 
 └── 
+
+<html>
+    <head>
+    </head>
+    <body>
+        <nav>
+        </nav>
+        <main>
+        </main>
+    </body>
+</html>
 
 
 

@@ -26,7 +26,6 @@ export const useThemStore = create<ThemeStates>((set, get) => ({
     } 
 }))
 
-
 /** 
  * State for hiding or showing menu.
  * 
@@ -79,8 +78,47 @@ export const useAuthModalStore = create<AuthModalStates>((set, get) => ({
 /** 
  * State for storing hiding or showing authorization (login/signup)
  * 
- * @state {string} user - Ther user that has logged in.
+ * @state {string} user - The user that has logged in.
  */
 interface AuthStates {
     user: string;
 }
+
+/** 
+ * State for OAuth2 verification states
+ * 
+ * @state {string} githuboauthstate - A temporarily created random string
+ *                  to verify the login process. 
+ */
+export interface VerificationAuthOptions {
+    githubOauthState: string;
+    setGithubOauthState: (st:string) => void;
+    githubOauthStateReset: () => void;
+    githubOauthLink: string;
+    setGithubOauthLink: (link:string) => void;
+    githubOauthLinkReset: () => void;
+}
+export const useVerificationAuthState = create<VerificationAuthOptions>((set, get) => ({
+    githubOauthState: "",
+    setGithubOauthState: (st) => {
+        set({
+            githubOauthState: st
+        })
+    },
+    githubOauthStateReset: () => {
+        set({
+            githubOauthState: ""
+        })
+    },
+    githubOauthLink: "",
+    setGithubOauthLink: (link) => {
+        set({
+            githubOauthLink: link
+        })
+    },
+    githubOauthLinkReset: () => {
+        set({
+            githubOauthLink: ""
+        })
+    }
+}))
