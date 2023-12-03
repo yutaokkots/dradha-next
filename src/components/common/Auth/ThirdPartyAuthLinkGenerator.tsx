@@ -31,7 +31,6 @@ const ThirdPartyAuthLinkGenerator:React.FC<ThirdPartyAuthLinkGeneratorProps> = (
             })
         }
         
-        
         const handleClick = (e:React.MouseEvent<HTMLAnchorElement>) => {
             e.preventDefault();
             oAuthGithubCreate();
