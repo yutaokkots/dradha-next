@@ -1,30 +1,17 @@
 /** 
  * Main page for the app. 
  * Route: '/'
- * 
- * Authentication is performed here. 
 */
 
-import {signIn, signOut, useSession} from 'next-auth/react'
 import AuthModal from '@/components/modals/AuthModal'
-// import NavBar from '@/components/common/NavBar/NavBar'
+import NavBar
+ from '@/components/common/NavBar/NavBar'
 export default function Home() {
-    const {session, loading} = useSession();
     return (
-      <>
-      {loading && <h2>loading</h2>}
-      {!loading && !session && (
-        <>
-          Not signed in <br/>
-          <button onClick={() => signIn()}>SIGN IN</button>
-          <pre>{!session && "User is not logged in"}</pre>
-        </>
-      )}
         <main>
-            {/* <NavBar></NavBar> */}
+            <NavBar></NavBar>
             <AuthModal />
         </main>
-      </>
     )
 }
 
