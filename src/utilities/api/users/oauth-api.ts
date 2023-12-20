@@ -6,16 +6,19 @@
  * @throws {Error} - Throws an error if the response was unsuccessful. 
  */
 
+import { routes } from "../routes"
 import { SendRequest } from "../utils/send-requests"
+
 
 const GITHUB_ID = process.env.NEXT_PUBLIC_GITHUB_OAUTH_ID || ""
 const REDIRECT_URL = process.env.NEXT_PUBLIC_REDIRECT_URL || ""
-
+const BASE_URL = routes.oauth
+const SCOPE = "read:user, user:email"
 
 // Sends a request to receive an authorization token
 const oAuthGithubStateGet = () => {
     const sr = new SendRequest()
-    return sr.sendRequest("oauth/callback/state")
+    return sr.sendRequest(`${BASE_URL}/callback/state`)
 }
 
 // Creates a github OAuth params to send with the initial OAuth request. 
@@ -23,6 +26,7 @@ const oAuthGithubLink = () => {
     const queryParams = new URLSearchParams({
         client_id: GITHUB_ID,
         redirect_uri: REDIRECT_URL,
+        scope: SCOPE
     });
     return `?${queryParams.toString()}`;
 }
