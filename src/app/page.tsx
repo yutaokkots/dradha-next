@@ -5,11 +5,11 @@
  * Authentication is performed here. 
 */
 
-import {signIn, signOut, useSession} from 'next-auth/providers'
+import {signIn, signOut, useSession} from 'next-auth/react'
 import AuthModal from '@/components/modals/AuthModal'
 // import NavBar from '@/components/common/NavBar/NavBar'
 export default function Home() {
-    const [session, loading] = useSession();
+    const {session, loading} = useSession();
     return (
       <>
       {loading && <h2>loading</h2>}
