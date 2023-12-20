@@ -31,10 +31,7 @@ const GithubCallBack = () => {
     return (
         <>
             <div className="w-screen h-screen">
-                <h1>code: {params.code}, state: {params.state}</h1>
-                <div>Logging in</div>
-                <div>{  githubOauthState } </div>
-                <div>{  githubOauthLink } </div>
+                <div>redirecting</div>
             </div>
         </>
     )
