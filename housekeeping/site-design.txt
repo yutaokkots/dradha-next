@@ -18,10 +18,11 @@ Draft layout
 │   └── (users)
 │       ├── layout.tsx
 │       └── [user].tsx  (dradha.co/v/[user]) -> user's main dashboard
-└── auth
-    ├── page.tsx
-    └── githubcallback  (dradha.co/auth/githubcallback)
-        ├── page.tsx
+└── api
+    └── auth
+        ├── route.ts
+        └── githubcallback  (dradha.co/auth/githubcallback)
+            ├── page.tsx
 
 └── 
 
