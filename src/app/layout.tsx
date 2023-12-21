@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+
+import NextAuthProvider from '@/app/NextAuthProvider'
+
 import './globals.css'
 import NavBar from '@/components/common/NavBar/NavBar'
 
@@ -13,14 +16,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  Session
 }: {
   children: React.ReactNode
+  Session: any
 }) {
     const theme = themeGetter();
     return (
         <html lang="en" className={theme}>
             <body className={inter.className}>
-                {children}
+                <NextAuthProvider session={Session}>
+                    {children}
+                  </NextAuthProvider>
             </body>
         </html>
   )
