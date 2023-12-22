@@ -1,10 +1,10 @@
 "use client"
 import React from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { signIn, useSession } from 'next-auth/react'
 
 const Login = () => {
-    // const router = useRouter()
+     const router = useRouter()
     // useSession hook gets the session from SessionProvider (see 'src/pages/_app.tsx')
     const {data: session, status} = useSession();
 
@@ -13,7 +13,7 @@ const Login = () => {
     }
 
     if (session){
-        // router.push("/")
+        router.push("/profile")
         return;
     }
     
@@ -27,7 +27,7 @@ const Login = () => {
 
     return (
         <>
-            <div>
+            <div className="flex justify-center">
                 <div> You are not authenticated</div>
                 <input type="button" onClick={handleSignIn} value="BUTTON"></input>
             </div>

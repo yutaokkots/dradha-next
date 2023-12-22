@@ -13,10 +13,15 @@ const LoginButton = () => {
             </>
         )
     }
+    const handleClick = (e) => {
+        e.preventDefault()
+        signIn()
+    }
+
     return (
         <>
             not signed in<br/>
-            <button onClick={() => signIn()}>Sign in </button>
+            <button onClick={handleClick}>Sign in </button>
         </>
     )
 }
