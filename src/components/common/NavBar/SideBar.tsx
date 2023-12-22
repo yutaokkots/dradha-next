@@ -1,6 +1,8 @@
+"use client";
 import React from 'react'
 import ThemeToggler from '@/components/primitives/ThemeToggler';
 import SignInButton from '@/components/primitives/SignInButton';
+import LoginButton from '../Auth/LoginButton';
 
 const SideBar = () => {
     return (
@@ -51,6 +53,9 @@ const SideBar = () => {
                     <div className='flex flex-col w-full border-green-100 items-center'>
                         <div>
                             <SignInButton />
+                        </div>
+                        <div>
+                            <LoginButton />
                         </div>
                         <div className="border-2 w-full border-green-100">
                             <div>
