@@ -13,7 +13,7 @@ const Login = () => {
     }
 
     if (session){
-        router.push("/profile")
+        router.push("/")
         return;
     }
     

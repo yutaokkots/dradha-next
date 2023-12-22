@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import NextAuthProvider from '@/app/nextauthprovider'
+import NextAuthProvider from '@/lib/nextauthprovider'
 const inter = Inter({ subsets: ['latin'] })
 import themeGetter from "@/utilities/helpers/themeGetter";
 import './globals.css'

@@ -1,3 +1,56 @@
+# Dradha app
+
+## What is it?
+
+A collection of resources and modules for learning and productivity. 
+
+## References
+
+General Next.js app structure for reference.
+
+```
+src
+.
+├── app                       (only for routing)
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── page.tsx              (dradha.co/)
+│   └── v                     (dradha.co/v/) -> empty directory/refresh to main
+│       ├── layout.tsx
+│       ├── page.tsx
+│       └── (users)
+│           ├── layout.tsx
+│           └── [user].tsx    (dradha.co/v/[user]) -> user's main dashboard
+│
+├── components/               (base components)
+│   ├── common/
+│   ├── layout/
+│   ├── modals/
+│   └── primitives/
+│
+├── lib 
+│   ├── nextauthprovider.tsx  (passes next-auth Providers through entire app)
+│   ├── store.ts              (store for zustand state)
+│   └── ...                   (other library-related files)
+│
+├── pages 
+│   ├── _app.tsx
+│   └── api/                  (routes for api for authentication)
+│       └── auth/
+│           └── [...nextauth].ts
+│
+├── types                     (define types)
+│   └── next-auth.d.ts  
+│
+└── utilities
+    ├── api/                  (api-related functions)
+    └── helpers/              (other helper functions)       
+```
+
+
+<hr>
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

@@ -2,6 +2,7 @@ import NextAuth from 'next-auth';
 import CredentialsProvider from "next-auth/providers/credentials"
 import axios from 'axios';
 
+
 const BACKEND_ACCESS_TOKEN_LIFETIME = 45 * 60;            // 45 minutes
 const BACKEND_REFRESH_TOKEN_LIFETIME = 6 * 24 * 60 * 60;  // 6 days
 
@@ -90,32 +91,3 @@ export const authOptions = {
 
 export default NextAuth(authOptions)
 
-
-
-// import { NextApiRequest, NextApiResponse } from "next";
-// import GithubProvider from "next-auth/providers/github";
-// import { CredentialsProvider } from "next-auth/providers/credentials";
-// import { signIn } from "next-auth/react";
-
-// export const authOptions = {
-//     providers: [
-//       GithubProvider({
-//         clientId: process.env.GITHUB_ID,
-//         clientSecret: process.env.GITHUB_CLIENT_SECRET,
-//       }),
-//     ],
-//     callbacks: {
-//       async signIn(user, account, profile){
-//         return true;
-//       },
-//       async jwt(token, user, account, profile, isNewUser){
-//         return token;
-//       },
-//       async session(session, user){
-//         return session
-//       }
-//     }
-
-// }
-
-// export default (req: NextApiRequest, res: NextApiResponse) =>  NextAuth(req, res, authOptions);
